@@ -1,0 +1,193 @@
+<nav class="navbar navbar-light bg-light d-flex justify-content-center text-center" id="nav1">
+    <div class="container-fluid w-100 ">
+        <div class="col-3">
+            <h5><i class="fas fa-check"></i> Παράδοση κατ’ οίκον 07:00 έως 20:30</h5>
+        </div>
+        <div class="col-3">
+            <h5><i class="fas fa-check"></i> Παραλαβή από κατάστημα</h5>
+        </div>
+        <div class="col-3">
+            <h5><i class="fas fa-check"></i> Έως 11.000 προϊόντα
+            </h5>
+        </div>
+        <div class="col-3">
+            <h5><i class="fas fa-check"></i> Αποκλειστικές online προσφορές</h5>
+        </div>
+    </div>
+</nav>
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary w-100 " id="nav2">
+    
+    <div class="container-fluid w-100 ">
+        <a class="navbar-brand" href="#">
+            <img src="/img/Cretan Market.png" alt="yo" width="80" height="80"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="contaner-fluid d-flex justify-content-end">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                    <li class="nav-item me-3">
+                        <div class="input-group">
+                            <div class="form-outline">
+                                <input id="search-focus" type="search" id="form1" class="form-control" />
+                                <label class="form-label" for="form1">Search</label>
+                            </div>
+                            <button type="button" class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li class="nav-item me-3">
+                        <button type="button" class="btn btn-outline-light btn-rounded" data-mdb-ripple-color="dark">
+                            <i class="fas fa-user-alt"></i> Συνδεδη/ Εγγραφή
+                        </button>
+                    </li>
+                    <li class="nav-item me-3">
+                        <button type="button" class="btn btn-primary btn-rounded"><i
+                                class="fas fa-shopping-cart"></i><span id="quantity"></span> 0 <i
+                                class="fas fa-grip-lines-vertical"></i> <span id="price">0 <i
+                                    class="fas fa-euro-sign"></i></span> </button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</nav> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-primary" id="nav2">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+            data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar brand -->
+            <a class="navbar-brand mt-2 mt-lg-0" href="/">
+                <img src="/img/logo.png" height="80" alt="" loading="lazy" />
+            </a>
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-left">
+                <li class="nav-item">
+                    <div class="input-group ">
+                        <div class="form-outline">
+                            <input id="search-focus" type="search" id="form1" class="form-control" />
+                            <label class="form-label" for="form1">Search</label>
+                        </div>
+                        <button type="button input-group" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+                <!-- Icon -->
+                <div class="container">
+                    <a href="/cart-view"><button type="button " class="btn btn-primary btn-rounded"><i
+                                class="fas fa-shopping-cart me-2"></i><span class="badge bg-warning" id="quantity">
+                                <% if(locals.cart){%>
+                                <%- cart.totalQty %>
+                                <%}%>
+                <% if(!locals.cart){%>
+                                0
+                                <%}%></span>
+                <i class="fas fa-grip-lines-vertical"></i> <span id="price">
+                <% if(locals.cart){%>
+                                <%- locals.cart.totalPrice.toFixed(2) %>
+                                <%}%>
+                <% if(!locals.cart){%>
+                                0
+                                <%}%>
+                <i class="fas fa-euro-sign"></i></span>
+            </button></a>
+
+                </div>
+
+                <!-- Avatar -->
+                <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuLink"
+                    role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                    <img src="https://image.flaticon.com/icons/png/512/18/18601.png" class="rounded-circle" height="25"
+                        alt="" loading="lazy" />
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" href="#"><%= user.name %></a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#">Settings</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/user/logout">Logout</a>
+                    </li>
+                    </ul>
+                </div>
+                <!-- Right elements -->
+            </div>
+            <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light text-primary" id="nav3">
+    <div class="container-fluid">
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item border-left">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Eshop
+                    </a>
+                    <ul class="dropdown-menu rounded-3 w-75" aria-labelledby="navbarDropdown">
+
+
+                        <li>
+                            <div class="row mt-1 ">
+                                <a href="/galaktokomika" class="col-3"><img src="/img/dashboard/1.png" alt=""
+                                        class="col-12"></a>
+                                <a href="/meatandfish" class="col-3"><img src="/img/dashboard/2.png" alt=""
+                                        class="col-12"></a>
+                                <a href="/fruits" class="col-3"><img src="/img/dashboard/3.png" alt=""
+                                        class="col-12"></a>
+                                <a href="/olagiatospiti" class="col-3"><img src="/img/dashboard/4.png" alt=""
+                                        class="col-12"></a>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="row mt-1 mb-3">
+                                <a href="/sanitize" class="col-3"><img src="/img/dashboard/5.png" alt=""
+                                        class="col-12"></a>
+                                <a href="/personalHygiene" class="col-3"><img src="/img/dashboard/6.png" alt=""
+                                        class="col-12"></a>
+                                <a href="/cleaning" class="col-3"><img src="/img/dashboard/7.png" alt=""
+                                        class="col-12"></a>
+                                <a href="/pets" class="col-3"><img src="/img/dashboard/8.png" alt="" class="col-12"></a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item border-left">
+                    <a class="nav-link border-left" href="#">Προσφορές</a>
+                </li>
+                <li class="nav-item border-left">
+                    <a class="nav-link border-left" href="#">Summer</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Συνταγές</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>

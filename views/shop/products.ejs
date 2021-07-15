@@ -1,0 +1,303 @@
+<%- include ('../partials/head.ejs') %>
+<% if(!locals.user){ %>
+<%- include ('../partials/navbar.ejs') %>
+<% } %>
+<% if(locals.user){ %>
+<%- include ('../partials/usernav.ejs') %>
+<% } %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#"><i class="fas fa-home"></i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Products</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</nav>
+<main class="container w-100 mb-5 mt-2">
+    <!-- Product Style -->
+    <section class="product-area shop-sidebar shop section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-12">
+                    <div class="shop-sidebar">
+                        <!-- Shop By Price -->
+                        <div class="single-widget range">
+                            <h3 class="title">Shop by Price</h3>
+                            <div class="price-filter">
+                                <div class="price-filter-inner">
+                                    <div id="slider-range"></div>
+                                    <div class="price_slider_amount">
+                                        <div class="label-input">
+                                            <span>Range:</span><input type="text" id="amount" name="price"
+                                                placeholder="Add Your Price" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="check-box-list">
+                                <li>
+                                    <label class="checkbox-inline" for="1"><input name="news" id="1" type="checkbox">$20
+                                        - $50<span class="count">(3)</span></label>
+                                </li>
+                                <li>
+                                    <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">$50
+                                        - $100<span class="count">(5)</span></label>
+                                </li>
+                                <li>
+                                    <label class="checkbox-inline" for="3"><input name="news" id="3"
+                                            type="checkbox">$100 - $250<span class="count">(8)</span></label>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--/ End Shop By Price -->
+                        <!-- Single Widget -->
+                        <div class="single-widget recent-post">
+                            <h3 class="title">Recent post</h3>
+                            <!-- Single Post -->
+                            <% if(products){%>
+                            <div class="single-post first">
+                                <div class="image">
+                                    <img src="<%-products[0].image%>" alt="#" height="77" width="75">
+                                </div>
+                                <div class="content">
+                                    <h5><a href="/<%-products[0].id %>"><%-products[0].title%></a></h5>
+                                    <p class="price"><i class="fas fa-euro-sign"></i><%-products[0].price%></p>
+                                    <ul class="reviews">
+                                        <li class="yellow"><i class="ti-star"></i></li>
+                                        <li class="yellow"><i class="ti-star"></i></li>
+                                        <li class="yellow"><i class="ti-star"></i></li>
+                                        <li><i class="ti-star"></i></li>
+                                        <li><i class="ti-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- End Single Post -->
+                            <!-- Single Post -->
+                            <div class="single-post first">
+                                <div class="image">
+                                    <img src="<%-products[1].image%>" alt="#" height="77" width="75">
+                                </div>
+                                <div class="content">
+                                    <h5><a href="/<%-products[1].id %>"><%- products[1].title %></a></h5>
+                                    <p class="price"><i class="fas fa-euro-sign"></i><%- products[1].price %></p>
+                                    <ul class="reviews">
+                                        <li class="yellow"><i class="ti-star"></i></li>
+                                        <li class="yellow"><i class="ti-star"></i></li>
+                                        <li class="yellow"><i class="ti-star"></i></li>
+                                        <li><i class="ti-star"></i></li>
+                                        <li><i class="ti-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- End Single Post -->
+                            <!-- Single Post -->
+                            <div class="single-post first">
+                                <div class="image">
+                                    <img src="<%-products[2].image%>" alt="#" height="77" width="75">
+                                </div>
+                                <div class="content">
+                                    <h5><a href="/<%-products[2].id %>"><%-products[2].title%></a></h5>
+                                    <p class="price"><i class="fas fa-euro-sign"></i><%-products[2].price%></p>
+                                    <ul class="reviews">
+                                        <li class="yellow"><i class="ti-star"></i></li>
+                                        <li class="yellow"><i class="ti-star"></i></li>
+                                        <li class="yellow"><i class="ti-star"></i></li>
+                                        <li><i class="ti-star"></i></li>
+                                        <li><i class="ti-star"></i></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- End Single Post -->
+                            <% };%>
+                        </div>
+                        <!--/ End Single Widget -->
+                        <!-- Single Widget -->
+                        <div class="single-widget category">
+                            <h3 class="title">Manufacturers</h3>
+
+                            <ul class="categor-list">
+                                <% var uniqueNames = []; %>
+                                <% products.forEach(function(o){ %>
+                                <% if(uniqueNames.indexOf(o.brand)===-1){ %>
+                                <%    uniqueNames.push(o.brand);%>
+                                <% } %>
+                                <% }); %>
+                                <% for (var i =0; i <=uniqueNames.length-1;  i++ ) { %>
+                                <li><%= uniqueNames[i] %></li>
+                                <% } %>
+
+
+                            </ul>
+                        </div>
+                        <!--/ End Single Widget -->
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-8 col-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Shop Top -->
+                            <div class="shop-top">
+                                <div class="shop-shorter">
+                                    <div class="single-shorter">
+                                        <label>Show :</label>
+                                        <select>
+                                            <option selected="selected">09</option>
+                                            <option>15</option>
+                                            <option>25</option>
+                                            <option>30</option>
+                                        </select>
+                                    </div>
+                                    <div class="single-shorter">
+                                        <label>Sort By :</label>
+                                        <select>
+                                            <option selected="selected">Name</option>
+                                            <option>Price</option>
+                                            <option>Size</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <ul class="view-mode">
+                                    <li><a id="shop-grid" class="active"><i class="fa fa-th-large"></i></a>
+                                    </li>
+                                    <li><a id="shop-list"><i class="fa fa-th-list"></i></a></li>
+                                </ul>
+                            </div>
+                            <!--/ End Shop Top -->
+                        </div>
+                    </div>
+                    <div class="container w-100" id="list-products" style="display:none">
+
+                        <div class="d-flex justify-content-center row w-100">
+                            <div class="col-md-12">
+                                <% if(products){ %>
+                                <% products.forEach(function(o) { %>
+                                <div class="row p-2 bg-white border-transparent rounded m-2">
+                                    <div class="col-md-3 mt-1"><img
+                                            class="img-fluid img-responsive rounded product-image" src="<%- o.image %>">
+                                    </div>
+                                    <div class="col-md-6 mt-1">
+                                        <h5><%- o.title %></h5>
+                                        <div class="d-flex flex-row">
+
+                                        </div>
+                                        <div class="mt-1 mb-1 spec-1"><span><%- o.allegations %></span>
+                                            <div class="mt-1 mb-1 spec-1"><span><%- o.suggestions %></span>
+
+                                            </div>
+                                            <div
+                                                class="align-items-center align-content-center col-md-3 border-left mt-1">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <h4 class="mr-1"><%- o.price %></h4>
+                                                    <%if(o.sales != 0.0){%>
+                                                    <span class="strike-text badge-danger"><%- o.sale %> %</span><%}%>
+                                        </div>
+                                        
+                                        <div class="d-flex flex-column mt-4"><% if(!locals.user){ %>
+                                                    <a href="/<%- o.id %>"><button class="btn btn-primary btn-sm"
+                                                            type="button">Λεπτομέριες</button></a>
+                                                    <% } %>
+                                                    <% if(locals.user){ %>
+                                                    <a href="/user/<%- o.id %>"><button class="btn btn-primary btn-sm"
+                                                            type="button">Λεπτομέριες</button></a>
+                                                    <% } %>
+
+                                                    <a href="/add-to-cart/<%- o._id %>"><button
+                                                            class="btn btn-outline-primary btn-sm mt-2" type="button"><i
+                                                                class="fas fa-shopping-cart m-2"></i>Προσθηκη</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%});} %>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container mt-5 mb-5" id="tiled-products">
+                        <div class="row w-100">
+
+                            <% products.forEach(function(o) { %>
+                            <div class="col-lg-4 col-md-6 col-12">
+                                <div class="single-product">
+                                    <div class="product-img">
+                                        <% if(!locals.user){ %>
+                                        <a href="/<%- o.id %>">
+                                            <% } %>
+                                            <% if(locals.user){ %>
+                                            <a href="/user/<%- o.id %>">
+                                                <% } %>
+
+                                                <img class="default-img" src="<%- o.image %>" alt="#">
+                                                <img class="hover-img" src="<%- o.image %>" alt="#">
+                                                <% if(o.sale!=0){ %>
+                                                <span class="price-dec"><%- o.sale %>% Off</span>
+                                                <% } %>
+
+                                            </a>
+                                            <div class="button-head">
+                                                <div class="product-action">
+                                                    <a data-toggle="modal" data-target="#exampleModal"
+                                                        title="Quick View" href="/add-to-cart/<%- o._id %>"><i
+                                                            class="fas fa-eye"></i><span>Quick
+                                                            Shop</span></a>
+                                                </div>
+                                                <div class="product-action-2">
+                                                    <% if(!locals.user){ %>
+                                                    <a title="Add to cart" href="/<%- o._id %>"><i
+                                                            class="fas fa-shopping-cart"></i>
+                                                        Προσθηκη</a>
+                                                    <% } %>
+                                                    <% if(locals.user){ %>
+                                                    <a title="Add to cart" href="user/<%- o._id %>"><i
+                                                            class="fas fa-shopping-cart"></i>
+                                                        Προσθηκη</a>
+                                                    <% } %>
+
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <h3><a href="product-details.html"><%- o.title %></a></h3>
+                                        <div class="product-price">
+                                            <span><i class="fas fa-euro-sign"></i> <%- o.price %></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <%}); %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/ End Product Style 1  -->
+</main>
+<script>
+    document.getElementById("shop-grid").onclick = function () {
+        document.getElementById("shop-list").classList.remove("active");
+        document.getElementById("shop-grid").classList.add("active");
+        document.getElementById("tiled-products").style.display = "block";
+        document.getElementById("list-products").style.display = "none";
+    }
+    document.getElementById("shop-list").onclick = function () {
+        document.getElementById("shop-list").classList.add("active");
+        document.getElementById("shop-grid").classList.remove("active");
+        document.getElementById("tiled-products").style.display = "none";
+        document.getElementById("list-products").style.display = "block";
+    }
+</script>
+<%- include ('../partials/footer.ejs') %>
+<%- include ('../partials/rest-body.ejs') %>

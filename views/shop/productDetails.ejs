@@ -1,0 +1,32 @@
+<%- include ('../partials/head.ejs') %>
+<% if(!locals.user){ %>
+<%- include ('../partials/navbar.ejs') %>
+<% } %>
+<% if(locals.user){ %>
+<%- include ('../partials/usernav.ejs') %>
+<% } %>
+
+<div class="container mb-5 mt-5">
+    <div class="row">
+        <div class="container col-4">
+            <img class="col-12" src=" <%-product.image %>" alt="product">
+        </div>
+        <div class="container col-5">
+            <span class="badge badge-pill badge-dark"><%- product.brand %></span>
+            <h2><%- product.title %></h2>
+            <hr>
+            <h5 class=" text-muted"><%- product.allegations %></h5>
+            <div class="card mt-2 mb-2">
+                <div class="card-body">
+                    <h2><b><%- product.price %></b> <i class="fas fa-euro-sign"></i></h2>
+                    <a href="/add-to-cart/<%- product._id %>"><button type="button" class="btn btn-primary"><i
+                                class="fas fa-shopping-cart"></i> Προσθήκη</button></a>
+                </div>
+            </div>
+            <%- product.description%>
+        </div>
+    </div>
+
+</div>
+
+<%- include ('../partials/footer.ejs') %> <%- include ('../partials/rest-body.ejs') %>

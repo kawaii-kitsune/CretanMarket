@@ -1,0 +1,167 @@
+
+// router.get('/', async (req, res, next) => {
+//   try {
+//     const products = await Products.find();
+//     res.render('dashboard', {
+//       products
+//     })
+//   } catch (err) {
+//     res.json({
+//       message: err
+//     });
+//   }
+// });
+
+// router.get('/connect', (req, res) => {
+//   res.render('connect')
+// });
+
+// router.get('/404', (req, res) => {
+//   res.render('error')
+// });
+// router.get('/pets', async (req, res, next) => {
+//   try {
+//     const products = await Products.find({
+//       category: "Για κατοικίδια"
+//     });
+//     res.render('productsuser', {
+//       products
+//     })
+//   } catch (err) {
+//     res.json({
+//       message: err
+//     });
+//   }
+// });
+// router.get('/fruits', async (req, res, next) => {
+//   try {
+//     const products = await Products.find({
+//       category: "Οπωροπωλείο"
+//     });
+//     res.render('productsuser', {
+//       products
+//     })
+//   } catch (err) {
+//     res.json({
+//       message: err
+//     });
+//   }
+// });
+// router.get('/meatandfish', async (req, res, next) => {
+//   try {
+//     const products = await Products.find({
+//       category: "Φρέσκο Κρέας & Ψάρια"
+//     });
+//     res.render('productsuser', {
+//       products
+//     })
+//   } catch (err) {
+//     res.json({
+//       message: err
+//     });
+//   }
+// });
+// router.get('/galaktokomika', async (req, res, next) => {
+//   try {
+//     const products = await Products.find({
+//       category: "Γαλακτοκομικά"
+//     });
+//     res.render('productsuser', {
+//       products
+//     })
+//   } catch (err) {
+//     res.json({
+//       message: err
+//     });
+//   }
+// });
+// router.get('/olagiatospiti', async (req, res, next) => {
+//   try {
+//     const products = await Products.find({
+//       category: "Όλα για το σπίτι"
+//     });
+//     res.render('productsuser', {
+//       products
+//     })
+//   } catch (err) {
+//     res.json({
+//       message: err
+//     });
+//   }
+// });
+// router.get('/sanitize', async (req, res, next) => {
+//   try {
+//     const products = await Products.find({
+//       category: "Αντισυπτική Προστασία"
+//     });
+//     res.render('productsuser', {
+//       products
+//     })
+//   } catch (err) {
+//     res.send({
+//       message: err
+//     });
+//   }
+// });
+// router.get('/personalHygiene', async (req, res, next) => {
+//   try {
+//     const products = await Products.find({
+//       category: "Είση Προσωπικής Περιποίησης"
+//     });
+//     res.render('productsuser', {
+//       products
+//     })
+//   } catch (err) {
+//     res.send({
+//       message: err
+//     });
+//   }
+// });
+// router.get('/cleaning', async (req, res, next) => {
+//   try {
+//     const products = await Products.find({
+//       category: "Καθαριστικά"
+//     });
+//     res.render('productsuser', {
+//       products
+//     })
+//   } catch (err) {
+//     res.send({
+//       message: err
+//     });
+//   }
+// });
+// router.get('/sales', async (req, res, next) => {
+//   try {
+//     const products = await Products.find({
+//       sales: {
+//         $lt: 0
+//       }
+//     });
+//     res.render('products', {
+//       products
+//     })
+//   } catch (err) {
+//     res.send({
+//       message: err
+//     });
+//   }
+// });
+// //GET A SPECIFIC Products
+// router.get('/:productId', async (req, res) => {
+
+//   try {
+
+//     const product = await Products.findOne({
+//       _id: req.params.productId
+//     });
+//     res.render('productDetails', {
+//       product
+//     })
+//   } catch {
+
+//     res.json({
+//       message: err
+//     });
+//   }
+// })

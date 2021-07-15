@@ -1,0 +1,208 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#"><i class="fas fa-home"></i></a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</nav>
+<main class="row mt-2 w-100 border border-dark rounded-7 mt-1 mb-2" id="dashboard-main">
+
+    <div class="row w-100 m-2 ">
+        <% if(locals.user){ %>
+        <%- include('navigationUser.ejs') %>
+        <% } %>
+        <% if(!locals.user){ %>
+        <%- include('navigation.ejs') %>
+        <% } %>
+        <div class="container col-7 mt-2" style="width:65%;">
+            <!-- Carousel wrapper -->
+            <div class="row">
+                <div id="carouselDarkVariant" class="carousel slide carousel-fade " data-mdb-ride="carousel">
+                    <!-- Indicators -->
+                    <div class="carousel-indicators">
+                        <button data-mdb-target="#carouselDarkVariant" data-mdb-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button data-mdb-target="#carouselDarkVariant" data-mdb-slide-to="1"
+                            aria-label="Slide 1"></button>
+                        <button data-mdb-target="#carouselDarkVariant" data-mdb-slide-to="2"
+                            aria-label="Slide 1"></button>
+                    </div>
+
+                    <!-- Inner -->
+                    <div class="carousel-inner ">
+                        <!-- Single item -->
+                        <div class="carousel-item active">
+                            <img src="/img/Cretan_Market/1.png" class="d-block w-100" alt="..." />
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="carousel-caption d-none d-md-block bg-primary rounded-pill"
+                                    id="carousel-sale">
+                                    <h5 class="text-light">Εως και<b class="text-danger"> 11.000</b> Προϊόντα</h5>
+                                    <button type="button" class="btn btn-danger btn-rounded">Eshop</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single item -->
+                        <div class="carousel-item">
+                            <img src="/img/Cretan_Market/2.png" class="d-block w-100" alt="..." />
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="carousel-caption d-none d-md-block bg-primary rounded-pill"
+                                    id="carousel-sale">
+                                    <h5 class="text-light">Φρέσκα Προϊόντα</h5>
+                                    <a href="/fruits"><button type="button"
+                                            class="btn btn-danger btn-rounded">Επισκευθείτε</button></a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single item -->
+                        <div class="carousel-item">
+                            <img src="/img/Cretan_Market/3.png" class="d-block w-100" alt="..." />
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="carousel-caption d-none d-md-block bg-primary rounded-pill"
+                                    id="carousel-sale">
+                                    <h5 class="text-light">Μεγάλες Προσφορές εως και<b class="text-danger"> 50%</b>
+                                    </h5>
+                                    <a href="/sales"><button type="button"
+                                            class="btn btn-danger btn-rounded">Sales</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Inner -->
+
+                    <!-- Controls -->
+                    <button class="carousel-control-prev " type="button" data-mdb-target="#carouselDarkVariant"
+                        data-mdb-slide="prev">
+                        <span class="carousel-control-prev-icon text-light" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-mdb-target="#carouselDarkVariant"
+                        data-mdb-slide="next">
+                        <span class="carousel-control-next-icon text-light" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <!-- Carousel wrapper -->
+            </div>
+            <div class="row">
+                <!-- Jumbotron -->
+                <div class="p-4 shadow-4 rounded-3 mt-3" style="background-color: hsl(196, 69%, 81%);">
+                    <h2 class="text-dark">Προσφορές από το <b>Cretan Market</b></h2>
+                    <hr>
+                    <div class="row d-flex justify-content-center text-center">
+                        <div class="card text-dark col-3 mx-2">
+                            <img src=" <%- products[0].image %>" class="card-img" alt="..." />
+                            <div class="card-img-overlay m-2">
+                                <h5 class="card-title"><%- products[0].title %></h5>
+                                <ul class="list-group  list-group-flush">
+                                    <li class="list-group-item bg-transparent">
+                                        <span class="badge bg-danger"><%- products[0].price %> <i
+                                                class="fas fa-euro-sign"></i></span>
+                                    </li>
+                                </ul>
+                                <p class="card-text"><span class="badge bg-warning text-dark"> εως 12/05</span></p>
+                                <a href="/<%- products[0].id %>" class="btn btn-primary"> <i
+                                        class="fas fa-shopping-cart"></i> Μετάβαση</a>
+                            </div>
+                        </div>
+                        <div class="card text-dark col-3 mx-2">
+                            <img src=" <%- products[1].image %>" class="card-img" alt="..." />
+                            <div class="card-img-overlay m-2">
+                                <h5 class="card-title"><%- products[1].title %></h5>
+                                <ul class="list-group  list-group-flush">
+
+                                    <li class="list-group-item bg-transparent"><span
+                                            class="badge bg-danger"><%- products[1].price %> <i
+                                                class="fas fa-euro-sign"></i></span>
+                                    </li>
+                                </ul>
+                                <p class="card-text"><span class="badge bg-warning text-dark"> εως 12/05</span></p>
+                                <a href="/<%- products[1].id %>" class="btn btn-primary"> <i
+                                        class="fas fa-shopping-cart"></i>
+                                    Μετάβαση</a>
+                            </div>
+                        </div>
+                        <div class="card  text-dark col-3 mx-2">
+                            <img src=" <%- products[2].image %>" class="card-img" alt="..." />
+                            <div class="card-img-overlay m-2">
+                                <h5 class="card-title"><%- products[2].title %></h5>
+                                <ul class="list-group  list-group-flush">
+
+                                    <li class="list-group-item bg-transparent"><span
+                                            class="badge bg-danger"><%- products[2].price %> <i
+                                                class="fas fa-euro-sign"></i></span>
+                                    </li>
+                                </ul>
+                                <p class="card-text"><span class="badge bg-warning text-dark"> εως 12/05</span></p>
+                                <a href="/<%- products[2].id %>" class="btn btn-primary"> <i
+                                        class="fas fa-shopping-cart"></i>
+                                    Μετάβαση</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Jumbotron -->
+
+
+                <div class="row mt-4 ">
+                    <img src="/img/Coupons/coupon 1.png" alt="" class="col-6 rounded rounded-3">
+                    <img src="/img/Coupons/coupon 2.png" alt="" class="col-6 rounded rounded-3">
+                </div>
+                <div class="row d-flex justify-content-center mt-3">
+                    <h2 class="text-dark">Βρες όλα όσα χρειάζεσαι</h2>
+                </div>
+                <% if(locals.user){ %>
+
+                <div class="row mt-4 ">
+                    <div class="row mt-1 ">
+                        <a href="/user/galaktokomika" class="col-3"><img src="/img/dashboard/1.png" alt=""
+                                class="col-12"></a>
+                        <a href="/user/meatandfish" class="col-3"><img src="/img/dashboard/2.png" alt=""
+                                class="col-12"></a>
+                        <a href="/user/fruits" class="col-3"><img src="/img/dashboard/3.png" alt="" class="col-12"></a>
+                        <a href="/user/olagiatospiti" class="col-3"><img src="/img/dashboard/4.png" alt=""
+                                class="col-12"></a>
+                    </div>
+                    <div class="row mt-1 mb-3">
+                        <a href="/user/sanitize" class="col-3"><img src="/img/dashboard/5.png" alt=""
+                                class="col-12"></a>
+                        <a href="/user/personalHygiene" class="col-3"><img src="/img/dashboard/6.png" alt=""
+                                class="col-12"></a>
+                        <a href="/user/cleaning" class="col-3"><img src="/img/dashboard/7.png" alt=""
+                                class="col-12"></a>
+                        <a href="/user/pets" class="col-3"><img src="/img/dashboard/8.png" alt="" class="col-12"></a>
+                    </div>
+                </div>
+                <% } if(!locals.user){ %>
+                <div class="row mt-4 ">
+                    <div class="row mt-1 ">
+                        <a href="/galaktokomika" class="col-3"><img src="/img/dashboard/1.png" alt=""
+                                class="col-12"></a>
+                        <a href="/meatandfish" class="col-3"><img src="/img/dashboard/2.png" alt="" class="col-12"></a>
+                        <a href="/fruits" class="col-3"><img src="/img/dashboard/3.png" alt="" class="col-12"></a>
+                        <a href="/olagiatospiti" class="col-3"><img src="/img/dashboard/4.png" alt=""
+                                class="col-12"></a>
+                    </div>
+                    <div class="row mt-1 mb-3">
+                        <a href="/sanitize" class="col-3"><img src="/img/dashboard/5.png" alt="" class="col-12"></a>
+                        <a href="/personalHygiene" class="col-3"><img src="/img/dashboard/6.png" alt=""
+                                class="col-12"></a>
+                        <a href="/cleaning" class="col-3"><img src="/img/dashboard/7.png" alt="" class="col-12"></a>
+                        <a href="/pets" class="col-3"><img src="/img/dashboard/8.png" alt="" class="col-12"></a>
+                    </div>
+                </div>
+                <% } %>
+
+
+            </div>
+</main>

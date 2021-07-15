@@ -1,0 +1,11 @@
+<%- include ('./partials/head.ejs') %>
+<% if(!locals.user){ %>
+<%- include ('./partials/navbar.ejs') %>
+<% } %>
+<% if(locals.user){ %>
+<%- include ('./partials/usernav.ejs') %>
+<% } %>
+
+<%- include ('./partials/home.ejs') %>
+<%- include ('./partials/footer.ejs') %>
+<%- include ('./partials/rest-body.ejs') %>

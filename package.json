@@ -1,0 +1,29 @@
+{
+  "name": "cretanmarket",
+  "version": "1.0.0",
+  "description": "Thesis about Making A supermarket page without a relational database",
+  "main": "nodemon app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "nodemon app.js"
+  },
+  "author": "pavlos",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
+    "csurf": "^1.11.0",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "mdb-ui-kit": "^3.8.1",
+    "mongodb": "^3.6.8",
+    "mongoose": "^5.13.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7"
+  }
+}
