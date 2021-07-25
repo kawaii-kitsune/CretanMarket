@@ -1,0 +1,38 @@
+<%- include ('../partials/head.ejs') %>
+<% if(!locals.user){ %>
+<%- include ('../partials/navbar.ejs') %>
+<% } %>
+<% if(locals.user){ %>
+<%- include ('../partials/usernav.ejs') %>
+<% } %>
+<div class="container w-100 mt-6 mb-6">
+    <div class="text-center">
+        <br>
+        <h3><b>Cretan Supermarket</b></h3>
+    </div>
+    <br>
+    <p class="text-start">
+        Στην <b>Cretan</b> έχουμε επάξια κατακτήσει μια θέση στο τραπέζι κάθε ελληνικού νοικοκυριού, μέσα από την
+        αδιαπραγμάτευτη ποιότητά μας, τη μοναδική μας εξυπηρέτηση και την ξεχωριστή ποικιλία μας. Με οδηγό το σκοπό μας
+        να δίνουμε τον καλύτερό μας εαυτό για να κάνουμε τη διαφορά στις ζωές των ανθρώπων, είμαστε πάντα δίπλα στους
+        2,2 εκατομμύρια πελάτες μας με θάρρος, ακεραιότητα, ομαδικότητα, φροντίδα και χιούμορ.</p>
+    <br>
+    Πάντα δίπλα σε κάθε γειτονιά της Ελλάδας, εκεί όπου χτυπάει η καρδιά μας μέσα από το δίκτυό μας που ξεπερνάει τα 500
+    καταστήματα σε όλη την Ελλάδα. Εκεί όπου οι άνθρωποί μας γίνονται οι δικοί σας άνθρωποι, έτοιμοι να σας
+    εξυπηρετήσουν με χαρά και μεράκι και να προσφέρουν μια μοναδική αγοραστική εμπειρία σε όλους και σε καθέναν
+    ξεχωριστά.
+    <br><br>
+    <div class="row">
+        <div class="col-sm-4">
+            <img class="img-responsive text-center" src="/img/Cretan_Market/1.jpg" style="width:100%">
+        </div>
+        <div class="col-sm-4">
+            <img class="img-responsive text-center" src="/img/Cretan_Market/5.jpg" style="width:100%">
+        </div>
+        <div class="col-sm-4">
+            <img class="img-responsive text-center" src="/img/Cretan_Market/3.jpg" style="width:100%">
+        </div>
+    </div>
+</div>
+<%- include ('../partials/footer.ejs') %>
+<%- include ('../partials/rest-body.ejs') %>

@@ -1,0 +1,104 @@
+<%- include ('../../../views/partials/head.ejs') %>
+<%- include ('./partials/navbar.ejs') %>
+
+
+<div class="container ">
+    <div class="row mt-2">
+        <h2>Mailbox</h2>
+        <hr>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade active show" id="inbox" aria-labelledby="inbox-tab" role="tabpanel">
+                <div>
+                    <div class="row p-4 no-gutters align-items-center">
+                        <div class="col-sm-12 col-md-6">
+                            <h3 class="font-light mb-0"><i
+                                    class="ti-email mr-2"></i><% var i=0; if(!cmess.isRead){i++;}%><%= i %></h3>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                        </div>
+                    </div>
+                    <!-- Mail list-->
+                    <div class="table-responsive">
+                        <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                            <tbody class="overflow-scroll">
+                                <% cmess.forEach(function(o) { %>
+                                <!-- row -->
+
+                                <tr>
+                                    <!-- label -->
+
+                                    <!-- star -->
+                                    <td><i class="fa fa-envelope text-warning"></i></td>
+                                    <td>
+                                        <span class="mb-0 text-dark"><%-o.name%></span>
+                                    </td>
+                                    <!-- Message -->
+                                    <td>
+                                        <a class="link" href="mailto:<%= o.email %>">
+                                            <span
+                                                class="badge badge-pill text-white font-medium badge-danger mr-2">CS</span>
+                                            <span class="text-dark"><%- o.message %></span>
+                                        </a>
+                                    </td>
+                                    <!-- Attachment -->
+                                    <td><a href="/admin/email/delete/<%- locals.user.id %>/<%- o.id %>" type="btn"
+                                            class="btn btn-circle btn-danger text-white">
+
+                                            <i class="fa fa-trash"></i>
+
+                                        </a></td>
+                                    <!-- Time -->
+                                    <td class="text-muted"><%- o.Date.toISOString().split('T')[0] %></td>
+
+
+                                </tr>
+                                <%});%>
+                                <!-- row -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="sent" aria-labelledby="sent-tab" role="tabpanel">
+                <div class="row p-3 text-dark">
+                    <div class="col-md-6">
+                        <h3 class="font-light">Lets check profile</h3>
+                        <h4 class="font-light">you can use it with the small code</h4>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo,
+                            rhoncus ut, imperdiet a.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="spam" aria-labelledby="spam-tab" role="tabpanel">
+                <div class="row p-3 text-dark">
+                    <div class="col-md-6">
+                        <h3 class="font-light">Come on you have a lot message</h3>
+                        <h4 class="font-light">you can use it with the small code</h4>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo,
+                            rhoncus ut, imperdiet a.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="delete" aria-labelledby="delete-tab" role="tabpanel">
+                <div class="row p-3 text-dark">
+                    <div class="col-md-6">
+                        <h3 class="font-light">Just do Settings</h3>
+                        <h4 class="font-light">you can use it with the small code</h4>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo,
+                            rhoncus ut, imperdiet a.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<%- include ('./partials/footer.ejs') %>
+<%- include ('../../../views/partials/rest-body.ejs') %>

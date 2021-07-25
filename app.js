@@ -5,10 +5,6 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const path = require('path');
-const {
-  ensureAuthenticated,
-  forwardAuthenticated
-} = require('./config/auth');
 /* Import database connection */
 const dbConnection = require('./database');
 
@@ -39,6 +35,7 @@ app.use(
   session({
     secret: 'secret',
     resave: true,
+    expires: new Date(Date.now() + (30 * 86400 * 1000)),
     saveUninitialized: true
   })
 );
@@ -57,9 +54,11 @@ app.use(function (req, res, next) {
 });
 
 //ROUTES
-app.use('/', require('./routes/index.js'));
-app.use('/user', require('./routes/user.js'));
 app.use('/admin', require('./routes/admin.js'));
+app.use('/user', require('./routes/user.js'));
+
+app.use('/', require('./routes/index.js'));
+
 
 app.use(function (req, res, next) {
   res.status(404);

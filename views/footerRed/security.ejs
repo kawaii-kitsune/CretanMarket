@@ -1,0 +1,68 @@
+<%- include ('../partials/head.ejs') %>
+<% if(!locals.user){ %>
+<%- include ('../partials/navbar.ejs') %>
+<% } %>
+<% if(locals.user){ %>
+<%- include ('../partials/usernav.ejs') %>
+<% } %>
+<div class="container w-100 mt-6 mb-6">
+    <div class="text-center">
+        <br>
+        <h3><b>RESPONSIBLE DISCLOSURE POLICY</b></h3>
+    </div>
+    <br>
+    <p class="text-start">
+        <b><u>ENHANCEMENT OF DATA AND SYSTEM SECURITY AT AHOLD DELHAIZE</u></b><br><br>
+        If you have found a weak spot in one of our systems, we would like to hear about this from you directly, so the
+        necessary measures can be taken as quickly as possible to enhance system security. In order to enhance system
+        security responsibly, we kindly draw your attention to the following.</p>
+    <br>
+    <b><u>AHOLD DELHAIZE KINDLY ASKS YOU</u></b><br><br>
+    <ul>
+        <li>to provide sufficient information to reproduce the problem, so that Ahold Delhaize can address it as quickly
+            as
+            possible. The IP address or the URL of the system affected and a description of the findings are usually
+            sufficient, but more may be needed for more complex findings.</li>
+        <li>to leave your contact details, so that Ahold Delhaize can contact you.</li>
+        <li>to report your findings as quickly as possible after its discovery.</li>
+        <li>not to share any information on the findings with any other party than designated persons at Ahold Delhaize.
+        </li>
+        <li>to handle the knowledge on the findings with care by not performing any acts other than those necessary to
+            reveal the findings.</li>
+    </ul>
+    <br>
+    <b><u>WE EXPECT YOU NOT TO</u></b><br><br>
+    Η ΑΒ συλλέγει και επεξεργάζεται προσωπικά δεδομένα με νόμιμο τρόπο και σύμφωνα με την ισχύουσα νομοθεσία. Τα
+    προσωπικά
+    δεδομένα που συλλέγονται και επεξεργάζονται είναι τα απολύτως απαραίτητα για τον επιδιωκόμενο κάθε φορά σκοπό και
+    υπάρχει σαφής ενημέρωση των υποκειμένων τόσο ως προς το σκοπό συλλογής και επεξεργασίας των δεδομένων τους όσο και
+    ως
+    προς τα δικαιώματά τους.
+    <br><br>
+    <b><u>ΠΑΡΑΔΟΣΗ ΠΡΟΪΟΝΤΩΝ</u></b><br><br>
+    <ul>
+        <li>copy, change or delete data in a system (an alternative to this is making a directory listing of a system).
+        </li>
+        <li>make changes to a system.</li>
+        <li>repeatedly access the system or share access with others than designated persons at Ahold Delhaize.</li>
+        <li>use so-called “brute force” to access systems.</li>
+        <li>use denial-of-service or social engineering.</li>
+    </ul>
+    <br><br>
+    <b><u>WHAT YOU CAN EXPECT</u></b><br><br>
+    <ul>
+        <li>Ahold Delhaize does not share your personal details with third parties without your permission, unless this
+            is
+            mandatory by law or regulation.</li>
+        <li>Only after mutual consultation, your name can be mentioned as the person who made the findings.</li>
+        <li>Ahold Delhaize will send you a confirmation of receipt as soon as reasonably possible.</li>
+        <li>Ahold Delhaize offers a reward as thanks for help. Depending on the seriousness of the findings and the
+            quality
+            of the report, the reward can vary from a T-shirt, a meet & greet with our IT security team, to a maximum
+            EUR
+            300 in gift vouchers. It must at least concern a serious finding that is unknown to us.</li>
+    </ul>
+    <br><br>
+</div>
+<%- include ('../partials/footer.ejs') %>
+<%- include ('../partials/rest-body.ejs') %>

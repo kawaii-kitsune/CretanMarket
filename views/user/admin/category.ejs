@@ -1,0 +1,109 @@
+<%- include ('../../../views/partials/head.ejs') %>
+<%- include ('./partials/navbar.ejs') %>
+<style>
+    .card-box {
+        position: relative;
+        color: #fff;
+        padding: 20px 10px 40px;
+        margin: 20px 0px;
+    }
+
+    .card-box:hover {
+        text-decoration: none;
+        color: #f1f1f1;
+    }
+
+    .card-box:hover .icon img {
+        font-size: 100px;
+        transition: 1s;
+        -webkit-transition: 1s;
+    }
+
+    .card-box .inner {
+        padding: 5px 10px 0 10px;
+    }
+
+    .card-box h3 {
+        font-size: 12px;
+        font-weight: bold;
+        margin: 0 0 8px 0;
+        white-space: nowrap;
+        padding: 0;
+        text-align: left;
+    }
+
+    .card-box p {
+        font-size: 15px;
+    }
+
+    .card-box .icon {
+        position: absolute;
+        top: auto;
+        bottom: 5px;
+        right: 5px;
+        z-index: 0;
+        font-size: 72px;
+        color: rgba(0, 0, 0, 0.15);
+    }
+
+    .card-box .card-box-footer {
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        text-align: center;
+        padding: 3px 0;
+        color: rgba(255, 255, 255, 0.8);
+        background: rgba(0, 0, 0, 0.1);
+        width: 100%;
+        text-decoration: none;
+    }
+
+    .card-box:hover .card-box-footer {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .bg-blue {
+        background-color: #00c0ef !important;
+    }
+
+    .bg-green {
+        background-color: #00a65a !important;
+    }
+
+    .bg-orange {
+        background-color: #f39c12 !important;
+    }
+
+    .bg-red {
+        background-color: #d9534f !important;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <h2><%-filteredproducts[0].category%></h2>
+        <hr>
+        <% for (var i =0; i < filteredproducts.length;  i++ ) { %>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card-box bg-blue">
+                <div class="inner">
+                    <h3><%- filteredproducts[i].title
+                        %> </h3>
+                    <p> <%- filteredproducts[i].brand
+                        %></p>
+                </div>
+                <img class="rounded mb-1" src="<%- filteredproducts[i].image
+                    %>" alt="" style="width:50px ; height:50px ;">
+
+                <div class="card-box-footer">
+                    <a href="" type="btn" class="btn btn-primary me-2">edit</a>
+                    <a href="/admin/<%- user.id %>/<%- filteredproducts[i].id %>/delete" type="btn"
+                        class="btn btn-danger me-2">delete</a>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>
+<%- include ('./partials/footer.ejs') %>
+<%- include ('../../../views/partials/rest-body.ejs') %>

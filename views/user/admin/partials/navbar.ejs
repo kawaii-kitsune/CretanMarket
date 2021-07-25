@@ -1,0 +1,101 @@
+<!-- Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+    <div class="container-fluid justify-content-between">
+        <!-- Left elements -->
+        <div class="d-flex">
+            <!-- Brand -->
+            <a class="navbar-brand me-2 mb-1 d-flex align-items-center" href="/admin/<%- user._id %>/home">
+                <img src="/img/logo.png" height="50" alt="" loading="lazy" style="margin-top: 2px;" />
+            </a>
+
+            <!-- Search form -->
+            <form class="input-group w-auto my-auto d-none d-sm-flex">
+                <input autocomplete="off" type="search" class="form-control rounded" placeholder="Search"
+                    style="min-width: 125px;" />
+                <span class="input-group-text border-0 d-none d-lg-flex"><i class="fas fa-search"></i></span>
+            </form>
+        </div>
+        <!-- Left elements -->
+
+        <!-- Center elements -->
+        <ul class="navbar-nav flex-row d-none d-md-flex">
+
+            <li class="nav-item me-3 me-lg-1">
+                <a class="nav-link" href="/admin/<%- user.id %>/showusers">
+                    <span><i class="fas fa-users fa-lg"></i></span>
+                    <span class="badge rounded-pill badge-notification bg-danger"><%= allUsers.length %></span>
+                </a>
+            </li>
+        </ul>
+        <!-- Center elements -->
+
+        <!-- Right elements -->
+        <ul class="navbar-nav flex-row">
+            <li class="nav-item me-3 me-lg-1">
+                <a class="nav-link d-sm-flex align-items-sm-center" href="#">
+                    <img src="img/logo.png" class="rounded-circle" height="22" alt="" loading="lazy" />
+                    <strong class="d-none d-sm-block ms-1"><%- user.username %></strong>
+                </a>
+            </li>
+            <li class="nav-item me-3 me-lg-1">
+                <a class="nav-link" href="/admin/<%- user.id %>/registerprod">
+                    <span><i class="fas fa-plus-circle fa-lg" data-mdb-toggle="tooltip" data-mdb-placement="right"
+                            title="Click to add Products"></i></span>
+                </a>
+            </li>
+            <li class="nav-item dropdown me-3 me-lg-1">
+                <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button"
+                    data-mdb-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-comments fa-lg"></i>
+
+                    <span class="badge rounded-pill badge-notification bg-danger"><%= cmess.length %></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" href="/admin/<%- user.id %>/mailbox">Show Messages</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown me-3 me-lg-1">
+                <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button"
+                    data-mdb-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-bell fa-lg"></i>
+                    <span class="badge rounded-pill badge-notification bg-danger"><%= products.length %></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" href="/admin/<%- user.id %>/showproducts">Show Products</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/admin/<%- user.id %>/orders">Show Orders</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/admin/<%- user.id %>/showadmins">Show Editors</a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item dropdown me-3 me-lg-1">
+                <a class="nav-link dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button"
+                    data-mdb-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-chevron-circle-down fa-lg"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item text-muted"
+                            href="/admin/<%- user._id %>/profile"><%- user.username %></a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/user/profile">User view</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/user/logout">Logout</a>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+        <!-- Right elements -->
+    </div>
+</nav>
+<!-- Navbar -->

@@ -20,6 +20,9 @@
     <%- include ('../partials/navigation.ejs') %>
     <div class=" card container-fluid col-6">
         <!-- Pills navs -->
+        <% if ( errors.msg!=null ) { %>
+        <span class="badge bg-warning"><%= errors.msg %> </span>
+        <% } %>
         <div class="card-body">
             <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -72,13 +75,7 @@
 
                         <!-- 2 column grid layout -->
                         <div class="row mb-4">
-                            <div class="col-md-6 d-flex justify-content-center">
-                                <!-- Checkbox -->
-                                <div class="form-check mb-3 mb-md-0">
-                                    <input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-                                    <label class="form-check-label" for="loginCheck"> Να με Θυμάσαι </label>
-                                </div>
-                            </div>
+
 
                             <div class="col-md-6 d-flex justify-content-center">
                                 <!-- Simple link -->
@@ -91,7 +88,7 @@
 
                         <!-- Register buttons -->
                         <div class="text-center">
-                            <p>Δεν είστε Χρήστης; <a href="#!" id="reg">Εγγραφή</a></p>
+                            <p>Δεν είστε Χρήστης; <a class="btn bg-transparent me-2" id="reg"> Εγγραφή</a></p>
                         </div>
                     </form>
                 </div>
@@ -119,11 +116,19 @@
                         <p class="text-center">ή:</p>
 
                         <!-- Name input -->
-                        <div class="form-group form-outline mb-4">
+
+                        <div class="form-group form-outline  col-5 me-5 mb-4">
                             <input type="text" id="name" name="name" class="form-control"
                                 value="<%= typeof name != 'undefined' ? name : '' %>" />
                             <label class="form-label" for="registerName">Όνομα</label>
+
                         </div>
+                        <div class="form-group form-outline  col-5 mb-4 ">
+                            <input type="text" id="surname" name="surname" class="form-control"
+                                value="<%= typeof surname != 'undefined' ? surname : '' %>" />
+                            <label class="form-label" for="registerSurName">Επίθετο</label>
+                        </div>
+
 
                         <!-- Username input -->
                         <div class="form-group form-outline mb-4">
@@ -158,7 +163,7 @@
                             <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
                                 aria-describedby="registerCheckHelpText" />
                             <label class="form-check-label" for="registerCheck">
-                                Συμφωνώ με τοτς <a href="/terms">Όρους</a>
+                                Συμφωνώ με τους <a href="/terms">Όρους</a>
                             </label>
                         </div>
 
@@ -172,5 +177,15 @@
         <!-- Pills content -->
     </div>
 </main>
+<script>
+    document.getElementById("reg").onclick = function () {
+        document.getElementById("pills-register").classList.add("show");
+        document.getElementById("pills-register").classList.add("active");
+        document.getElementById("pills-login").classList.remove("show");
+        document.getElementById("pills-login").classList.remove("active");
+        document.getElementById("tab-login").classList.remove("active");
+        document.getElementById("tab-register").classList.add("active");
+    }
+</script>
 <%- include ('../partials/footer.ejs') %>
 <%- include ('../partials/rest-body.ejs') %>

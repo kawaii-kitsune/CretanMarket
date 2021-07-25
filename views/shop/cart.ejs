@@ -5,207 +5,257 @@
 <% if(locals.user){ %>
 <%- include ('../partials/usernav.ejs') %>
 <% } %>
-<% if(!locals.cart){%>
-<div class="container mt-5 mb-5">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-    <div class="row">
-        <div class="col-sm-12 col-md-10 col-md-offset-1">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Προϊόντα</th>
-                        <th>Ποσότητα</th>
-                        <th class="text-center">Τιμή</th>
-                        <th class="text-center">Σύνολο</th>
-                        <th> </th>
-                    </tr>
-                </thead>
-                <tbody>
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/"><i class="fas fa-home"></i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">Καλάθι</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</nav>
+<div class="container"><% if(locals.cart.totalQty==0){%>
+    <span class="badge bg-warning">Το καλάθι είναι άδειο</span>
+    <%}%></div>
+<% if(!locals.cart ){%>
+
+    <div class="container mt-5 mb-5">
+
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Προϊόντα</th>
+                            <th>Ποσότητα</th>
+                            <th class="text-center">Τιμή</th>
+                            <th class="text-center">Σύνολο</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <h1> Το καλάθι σας είναι άδειο </h1>
 
 
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <h5>Υποσύνολο</h5>
+                            </td>
+                            <td class="text-right">
+                                <h5><strong>0</strong></h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <h5>Μεταφορικά</h5>
+                            </td>
+                            <td class="text-right">
+                                <h5><strong>-</strong></h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <h3>Σύνολο</h3>
+                            </td>
+                            <td class="text-right">
+                                <h3><strong>0</strong></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <a href="/">
+                                    <button type="button" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-shopping-cart"></span> Συνέχεια στα Ψώνια
+                                    </button>
+                                </a>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success">
+                                    Αγορά <span class="glyphicon glyphicon-play"></span>
+                                </button></td>
+                        </tr>
+                    </tbody>
+                </table>
 
-
-                    <tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>
-                            <h5>Υποσύνολο</h5>
-                        </td>
-                        <td class="text-right">
-                            <h5><strong>0</strong></h5>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>
-                            <h5>Μεταφορικά</h5>
-                        </td>
-                        <td class="text-right">
-                            <h5><strong>-</strong></h5>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>
-                            <h3>Σύνολο</h3>
-                        </td>
-                        <td class="text-right">
-                            <h3><strong>0</strong></h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>
-                            <a href="/">
-                                <button type="button" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span> Συνέχεια στα Ψώνια
-                                </button>
-                            </a>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-success">
-                                Αγορά <span class="glyphicon glyphicon-play"></span>
-                            </button></td>
-                    </tr>
-                </tbody>
-            </table>
-
+            </div>
         </div>
     </div>
-</div>
-<% } %>
-<% if(locals.cart){ %>
-<div class="container mt-5 mb-5">
-    <div class="row">
-        <div class="col-sm-12 col-md-10 col-md-offset-1">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th>Προϊόντα</th>
-                        <th>Ποσότητα</th>
-                        <th class="text-center">Τιμή</th>
-                        <th class="text-center">Σύνολο</th>
-                        <th> </th>
-                    </tr>
-                </thead>
-                <tbody>
+    <% } %>
+    <% if(locals.cart){ %>
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Προϊόντα</th>
+                            <th>Ποσότητα</th>
+                            <th class="text-center">Τιμή</th>
+                            <th class="text-center">Σύνολο</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% products.forEach(function(o) { %>
+                        <%if(locals.cart.items[o._id]){%>
+                        <tr>
+                            <td class="col-sm-8 col-md-6">
+                                <div class="media">
+                                    <a class="thumbnail pull-left" href="#"> <img class="media-object"
+                                            src="<%- o.image %>" style="width: 72px; height: 72px;"> </a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading"><a href="#"><%- o.title %></a></h4>
+                                        <h5 class="media-heading"> από <a href="#"><%- o.brand %></a></h5>
 
-                    <% products.forEach(function(o) { %>
-                    <%if(locals.cart.items[o._id]){%>
-                    <tr>
-                        <td class="col-sm-8 col-md-6">
-                            <div class="media">
-                                <a class="thumbnail pull-left" href="#"> <img class="media-object" src="<%- o.image %>"
-                                        style="width: 72px; height: 72px;"> </a>
-                                <div class="media-body">
-                                    <h4 class="media-heading"><a href="#"><%- o.title %></a></h4>
-                                    <h5 class="media-heading"> από <a href="#"><%- o.brand %></a></h5>
-
-                                    <% if(o.stock > 0 ){%>
-                                    <span>Status: </span><span class="text-success">
-                                        <strong>In Stock</strong></span>
-                                    <% } %>
-                                    <% if(o.stock == 0 ){%>
-                                    <span>Status: </span><span class="text-warning">
-                                        <strong>Not in Stock</strong></span>
-                                    <% } %>
+                                        <% if(o.stock > 0 ){%>
+                                        <span>Status: </span><span class="text-success">
+                                            <strong>In Stock</strong></span>
+                                        <% } %>
+                                        <% if(o.stock == 0 ){%>
+                                        <span>Status: </span><span class="text-warning">
+                                            <strong>Not in Stock</strong></span>
+                                        <% } %>
+                                    </div>
                                 </div>
-                            </div>
-                        </td>
-                        <td class="col-sm-1 col-md-1" style="text-align: center">
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                value="<%- JSON.stringify(locals.cart.items[o._id].qty) %>">
-                        </td>
-                        <td class="col-sm-1 col-md-1 text-center">
-                            <strong><%- locals.cart.items[o._id].price.toFixed(2) %></strong>
-                        </td>
-                        <td class="col-sm-1 col-md-1 text-center">
-                            <strong><%- (locals.cart.items[o._id].price*locals.cart.items[o._id].qty).toFixed(2) %></strong>
-                        </td>
-                        <td class="col-sm-1 col-md-1">
-                            <a href="/remove-from-cart/<%- o._id %>" class="w-100">
-                                <button type="button" class="btn btn-danger mb-2 w-100">
-                                    <i class="fa fa-trash" aria-hidden="true"></i></span> διαγραφη
-                                </button></a>
-                            <div class="row">
-                                <a href="/add-to-cart/<%- o._id %>" class="col-5 me-2">
-                                    <button type="button" class="btn btn-warning ">
-                                        </span> +1
+                            </td>
+                            <td class="col-sm-1 col-md-1" style="text-align: center">
+                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                    value="<%- JSON.stringify(locals.cart.items[o._id].qty) %>">
+                            </td>
+                            <td class="col-sm-1 col-md-1 text-center">
+                                <strong><%- locals.cart.items[o._id].price.toFixed(2) %></strong>
+                            </td>
+                            <td class="col-sm-1 col-md-1 text-center">
+                                <strong><%- (locals.cart.items[o._id].price*locals.cart.items[o._id].qty).toFixed(2) %></strong>
+                            </td>
+                            <%if(!locals.user){%>
+                            <td class="col-sm-1 col-md-1">
+                                <a href="/remove-from-cart/<%- o._id %>" class="w-100">
+                                    <button type="button" class="btn btn-danger mb-2 w-100">
+                                        <i class="fa fa-trash" aria-hidden="true"></i></span> διαγραφη
                                     </button></a>
-                                <a href="/reduce/<%- o._id %> " class="col-5 ">
-                                    <button type="button" class="btn btn-info ">
-                                        </span> -1
+                                <div class="row">
+                                    <a href="/add-to-cart/<%- o._id %>" class="col-5 me-2">
+                                        <button type="button" class="btn btn-warning ">
+                                            </span> +1
+                                        </button></a>
+                                    <a href="/reduce/<%- o._id %> " class="col-5 ">
+                                        <button type="button" class="btn btn-info ">
+                                            </span> -1
+                                        </button></a>
+                                </div>
+
+                            </td>
+                            <%}%>
+                            <%if(locals.user){%>
+                            <td class="col-sm-1 col-md-1">
+                                <a href="/user/remove-from-cart/<%- user._id %>/<%- o._id %>" class="w-100">
+                                    <button type="button" class="btn btn-danger mb-2 w-100">
+                                        <i class="fa fa-trash" aria-hidden="true"></i></span> διαγραφη
                                     </button></a>
-                            </div>
+                                <div class="row">
+                                    <a href="/add-to-cart/<%- o._id %>" class="col-5 me-2">
+                                        <button type="button" class="btn btn-warning ">
+                                            </span> +1
+                                        </button></a>
+                                    <a href="/user/reduce/<%- user._id %>/<%- o._id %> " class="col-5 ">
+                                        <button type="button" class="btn btn-info ">
+                                            </span> -1
+                                        </button></a>
+                                </div>
 
-                        </td>
+                            </td>
+                            <%}%>
 
-                    </tr>
+                        </tr>
 
 
-                    <% }});%>
-                    <tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>
-                            <h5>Υποσύνολο</h5>
-                        </td>
-                        <td class="text-right">
-                            <h5><strong><%= locals.cart.totalPrice.toFixed(2) %></strong></h5>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>
-                            <h5>Μεταφορικά</h5>
-                        </td>
-                        <td class="text-right">
-                            <h5><strong>4.00</strong></h5>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>
-                            <h3>Σύνολο</h3>
-                        </td>
-                        <td class="text-right">
-                            <h3><strong><%= (locals.cart.totalPrice+4.00).toFixed(2) %></strong></h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>   </td>
-                        <td>
-                            <a href="/">
-                                <button type="button" class="btn btn-default">
+                        <% }});%>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <h5>Υποσύνολο</h5>
+                            </td>
+                            <td class="text-right">
+                                <h5><strong><%= locals.cart.totalPrice.toFixed(2) %></strong></h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <h5>Μεταφορικά</h5>
+                            </td>
+                            <td class="text-right">
+                                <h5><strong>4.00</strong></h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>
+                                <h3>Σύνολο</h3>
+                            </td>
+                            <td class="text-right">
+                                <h3><strong><%= (locals.cart.totalPrice+4.00).toFixed(2) %></strong></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>   </td>
+                            <td>   </td>
+                            <td>   </td>
+                            <td><%if(!locals.user){%>
+                                <a href="/">
+                                    <button type="button" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-shopping-cart"></span> Συνέχεια στα Ψώνια
+                                    </button>
+                                </a>
+                            </td>
+
+                            <td><a href="<%if(cart.totalPrice!=0){%>/checkout<%}%>"><button type="button" class="btn btn-success <%if(cart.totalPrice==0){%>disabled<%}%>">
+                                        Αγορά <span class="glyphicon glyphicon-play"></span>
+                                    </button></a> <%}%>
+                                    <%if(locals.user){%>
+                                <a href="/user/profile"> <button type="button" class="btn btn-default">
                                     <span class="glyphicon glyphicon-shopping-cart"></span> Συνέχεια στα Ψώνια
-                                </button>
-                            </a>
-                        </td>
-                        <td>
-                            <button type="button" class="btn btn-success">
-                                Αγορά <span class="glyphicon glyphicon-play"></span>
-                            </button></td>
-                    </tr>
-                </tbody>
-            </table>
+                                    </button>
+                                </a>
+                            </td>
 
+                            <td><a href="<%if(cart.totalPrice!=0){%>/user/<%- user.id %>/checkout<%}%>"><button type="button" class="btn btn-success  <%if(cart.totalPrice==0){%>disabled<%}%>">
+                                        Αγορά <span class="glyphicon glyphicon-play"></span>
+                                    </button></a> <%}%>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
         </div>
     </div>
-</div>
-<%  } %>
-<%- include ('../partials/footer.ejs') %>
-<%- include ('../partials/rest-body.ejs') %>
+    <%  } %>
+                                <%- include ('../partials/footer.ejs') %>
+                                <%- include ('../partials/rest-body.ejs') %>

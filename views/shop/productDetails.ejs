@@ -5,7 +5,36 @@
 <% if(locals.user){ %>
 <%- include ('../partials/usernav.ejs') %>
 <% } %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <%if(locals.user){%>
+                    <a href="/user/"><i class="fas fa-home"></i></a>
+                    <%}%>
+                        <%if(!locals.user){%>
+                    <a href="/"><i class="fas fa-home"></i></a>
+                    <%}%>
+                   
+                </li>
+                <li class="breadcrumb-item">
+                    <%if(locals.user){%>
+                    <a href="/user/<%- category %>/1/5"><%- category %></a>
+                    <%}%>
+                    <%if(!locals.user){%>
+                    <a href="/<%- category %>/1/5"><%- category %></a>
+                    <%}%>
+                    
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#"><%- product.title %></a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</nav>
 <div class="container mb-5 mt-5">
     <div class="row">
         <div class="container col-4">

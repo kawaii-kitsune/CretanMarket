@@ -1,0 +1,134 @@
+<%- include ('../../../views/partials/head.ejs') %>
+<%- include ('./partials/navbar.ejs') %>
+<div class="container-fluid mt-2 me-4 mb-5">
+    <section>
+        <div class="row ">
+            <div class="container col-10 mt-2 mb-3">
+                <h2>Contact Support</h2>
+                <hr>
+                <div class="list-group overflow-scroll">
+                    <% cmess.forEach(function(o) { %>
+                    <a href="mailto:<%= o.email %>" class="list-group-item list-group-item-action shadow"
+                        aria-current="true" data-mdb-toggle="tooltip" data-mdb-placement="right" title="Click to email">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1"><%= o.LastName %></h5>
+                            <small class="text-muted"><%= o.Date.toISOString().split('T')[0] %></small>
+                        </div>
+                        <p class="mb-1"><%= o.message %></p>
+                        <small class="text-primary"><%= o.email %></small>
+                    </a><% });%>
+
+                </div>
+            </div>
+    </section>
+    <section>
+        <div class="row">
+            <div class="">
+                <h2><i class="fas fa-hand-pointer"></i> Click on card to view</h2>
+                <hr>
+                <div class="container justify-content-center d-flex border-bottom  w-100">
+                    <div class="row w-100  justify-content-center d-flex">
+
+                        <a href="/admin/<%- user.id %>/mailbox" class="col-4">
+
+                            <div class="card text-white bg-success mb-3 mt-2 me-3 shadow " style="max-width: 18rem;">
+                                <div class="card-header text-center">Messages <i class="fas fa-inbox"></i></div>
+                                <div class="card-body row d-flex justify-content-center">
+                                    <div class="container col-5">
+                                        <h2 class="card-title mb-0">You Have</h2>
+                                    </div>
+                                    <div class="container col-5">
+                                        <p class="card-text mb-0">Unread: <span
+                                                class="badge bg-white text-dark"><% var i=0; if(!cmess.isRead){i++;}%><%= i %></span>
+                                        </p>
+                                        <p class="card-text">Read: <span
+                                                class="badge bg-white text-dark"><% var j=0; if(cmess.isRead){j++;}%><%= j %></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="/admin/<%- user.id %>/showusers " class="col-4">
+                            <div class="card text-white bg-warning mb-3 me-3 mt-2 shadow" style="max-width: 18rem;">
+                                <div class="card-header text-center">Database <i class="fas fa-database"></i></div>
+                                <div class="card-body row d-flex justify-content-center">
+                                    <div class="container col-5">
+                                        <h2 class="card-title mb-0">There Are</h2>
+                                    </div>
+                                    <div class="container col-5">
+                                        <p class="card-text mb-0">Items: <span
+                                                class="badge bg-white text-dark"><%- products.length %></span>
+                                        </p>
+                                        <p class="card-text">Users: <span
+                                                class="badge bg-white text-dark"><%- allUsers.length %></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </a>
+                        <a href="/admin/<%- user.id %>/showproducts" class="col-4">
+                            <div class="card text-white bg-primary mb-3 me-3 mt-2 shadow" style="max-width: 18rem;">
+                                <div class="card-header text-center">Last Added Items <i class="fas fa-database"></i>
+                                </div>
+                                <div class="card-body row d-flex justify-content-center">
+                                    <% for(var l=0; l < 3 ; l++){ %><p><%- products[l].title %></p><% } %>
+
+
+                                </div>
+                            </div>
+
+                        </a>
+
+                    </div>
+
+
+
+                </div>
+                <div class="row mt-2">
+
+
+                    <!-- Jumbotron -->
+                    <div class="p-5 text-center shadow gradient-custom">
+                        <h1 class="mb-3">Users</h1>
+                        <h4 class="mb-3">Here you can find all the Users</h4>
+                        <a class="btn btn-primary" href="/admin/<%- user.id %>/showusers" role="button">Edit Users</a>
+                    </div>
+                    <!-- Jumbotron -->
+
+                </div>
+                <div class="row mt-2">
+
+
+
+                    <!-- Jumbotron -->
+                    <div class="p-5 text-center  shadow bg-success text-light">
+                        <h1 class="mb-3">Products</h1>
+                        <h4 class="mb-3">Here you can find all the Products</h4>
+                        <a class="btn btn-primary" href="/admin/<%- user.id %>/showproducts" role="button">Edit
+                            Products</a>
+                    </div>
+                    <!-- Jumbotron -->
+
+
+                </div>
+
+                <div class="row mt-2 mb-2">
+
+
+                    <!-- Jumbotron -->
+                    <div class="p-5 text-center  shadow bg-info text-light">
+                        <h1 class="mb-3">Emails</h1>
+                        <h4 class="mb-3">Here you can find all Contact Support Emails</h4>
+                        <a class="btn btn-primary" href="/admin/<%- user.id %>/mailbox" role="button">Show</a>
+                    </div>
+                    <!-- Jumbotron -->
+
+
+
+                </div>
+            </div>
+    </section>
+    <%- include ('./partials/footer.ejs') %>
+    <%- include ('../../../views/partials/rest-body.ejs') %>

@@ -1,4 +1,5 @@
 <!-- Footer -->
+<%if(locals.user){%>
 <footer class="text-white text-left" id="footer">
     <!-- Grid container -->
     <div class="container p-4">
@@ -11,17 +12,19 @@
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="#!" class="text-white">Οδηγός
-                                eshop</a>
-                        </li>
-                        <li>
                             <a href="#!" class="text-white">Συχνές Ερωτήσεις</a>
                         </li>
                         <li>
-                            <a href="#!" class="text-white">Συχνές Ερωτήσεις Delivery.gr</a>
+                            <a href="/user/delivery" class="text-white">Συχνές Ερωτήσεις Delivery.gr</a>
                         </li>
                         <li>
-                            <a href="#!" class="text-white">Βρες το <strong>Cretan Market</strong></a>
+                            <a href="https://goo.gl/maps/8HQ2wCF1eAYcRB3K7" class="text-white">Βρες το <strong>Cretan
+                                    Market</strong></a>
+                        </li>
+                        <li>
+
+                            <a href="/user/client-support" class="text-white">Εξυπηρέτηση Πελατών</a>
+
                         </li>
                     </ul>
                 </div>
@@ -33,16 +36,13 @@
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="#!" class="text-white">Cretan Market </a>
+                            <a href="/user/cmarket" class="text-white">Cretan Market </a>
                         </li>
                         <li>
-                            <a href="#!" class="text-white">Cretan Market Franchise</a>
+                            <a href="/user/franchise" class="text-white">Cretan Market Franchise</a>
                         </li>
                         <li>
-                            <a href="#!" class="text-white">Cretan Market Καριέρα</a>
-                        </li>
-                        <li>
-                            <a href="#!" class="text-white">Υπεύθηνη Cretan Market </a>
+                            <a href="/user/respo" class="text-white">Υπεύθηνη Cretan Market </a>
                         </li>
                     </ul>
                 </div>
@@ -54,13 +54,13 @@
 
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="#!" class="text-white">Όροι και Προϋποθέσεις</a>
+                            <a href="/user/termsAndConds" class="text-white">Όροι και Προϋποθέσεις</a>
                         </li>
                         <li>
-                            <a href="#!" class="text-white">Πολιτική Απορρήτου</a>
+                            <a href="/user/policy" class="text-white">Πολιτική Απορρήτου</a>
                         </li>
                         <li>
-                            <a href="#!" class="text-white">Ασφάλεια</a>
+                            <a href="/user/security" class="text-white">Ασφάλεια</a>
                         </li>
 
                     </ul>
@@ -89,15 +89,16 @@
                                     class="fab fa-instagram"></i></a>
                         </li>
                         <li>
-                            Εγραφή
+                            Εγγραφή
                         </li>
                         <li>
-                            <form action="">
+                            <form action="/newsletter" method="POST">
                                 <div class="row d-flex justify-content-center">
 
 
                                     <div class="form-outline form-white mb-1 w-100">
-                                        <input type="email" id="form5Example2" class="form-control" />
+                                        <input type="email" id="email" name="email" class="form-control"
+                                            value="<%= typeof email != 'undefined' ? email : '' %>" />
                                         <label class="form-label" for="form5Example2">Email address</label>
                                     </div>
 
@@ -134,3 +135,141 @@
     <!-- Copyright -->
 </footer>
 <!-- Footer -->
+<%}%>
+        <%if(!locals.user){%>
+<footer class="text-white text-left" id="footer">
+    <!-- Grid container -->
+    <div class="container p-4">
+        <section class=" ">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>Βοήθεια</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#!" class="text-white">Συχνές Ερωτήσεις</a>
+                        </li>
+                        <li>
+                            <a href="/delivery" class="text-white">Συχνές Ερωτήσεις Delivery.gr</a>
+                        </li>
+                        <li>
+                            <a href="https://goo.gl/maps/8HQ2wCF1eAYcRB3K7" class="text-white">Βρες το <strong>Cretan
+                                    Market</strong></a>
+                        </li>
+                        <li>
+
+
+                            <a href="/client-support" class="text-white">Εξυπηρέτηση Πελατών</a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>Η Εταιρεία</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="/cmarket" class="text-white">Cretan Market </a>
+                        </li>
+                        <li>
+                            <a href="/franchise" class="text-white">Cretan Market Franchise</a>
+                        </li>
+                        <li>
+                            <a href="/respo" class="text-white">Υπεύθηνη Cretan Market </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5>Χρήσιμα</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="/termsAndConds" class="text-white">Όροι και Προϋποθέσεις</a>
+                        </li>
+                        <li>
+                            <a href="/policy" class="text-white">Πολιτική Απορρήτου</a>
+                        </li>
+                        <li>
+                            <a href="/security" class="text-white">Ασφάλεια</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0 ">
+                    <h5 class=""><strong>Newsletter & Social</strong></h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a class="btn btn-outline-light btn-floating me-2" href="#!" role="button"><i
+                                    class="fab fa-facebook-f"></i></a>
+
+                            <!-- Twitter -->
+                            <a class="btn btn-outline-light btn-floating me-2" href="#!" role="button"><i
+                                    class="fab fa-twitter"></i></a>
+
+                            <!-- Google -->
+                            <a class="btn btn-outline-light btn-floating me-2" href="#!" role="button"><i
+                                    class="fab fa-google"></i></a>
+
+                            <!-- Instagram -->
+                            <a class="btn btn-outline-light btn-floating me-2" href="#!" role="button"><i
+                                    class="fab fa-instagram"></i></a>
+                        </li>
+                        <li>
+                            Εγγραφή
+                        </li>
+                        <li>
+                            <form action="/newsletter" method="POST">
+                                <div class="row d-flex justify-content-center">
+
+
+                                    <div class="form-outline form-white mb-1 w-100">
+                                        <input type="email" id="email" name="email" class="form-control"
+                                            value="<%= typeof email != 'undefined' ? email : '' %>" />
+                                        <label class="form-label" for="form5Example2">Email address</label>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-outline-warning mb-4">
+                                        Subscribe
+                                    </button>
+                                </div>
+                                <!--Grid row-->
+                            </form>
+                        </li>
+
+
+                    </ul>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <b id="date"></b> Copyright:
+        <a class="text-muted" href="#">Παύλος Μπελιπασάκης ΤΠ4234</a>
+    </div>
+    <script>
+        var d = new Date();
+        var n = d.getFullYear();
+        document.getElementById("date").innerHTML = n;
+    </script>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->
+<%}%>

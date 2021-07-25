@@ -1,0 +1,88 @@
+<%- include ('./partials/head.ejs') %>
+<% if(!locals.user){ %>
+<%- include ('./partials/navbar.ejs') %>
+<% } %>
+<% if(locals.user){ %>
+<%- include ('./partials/usernav.ejs') %>
+<% } %>
+
+<div class="container-xl">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="contact-form">
+                <% if(locals.message){%>
+                <span class="badge bg-warning mt-2 mb-2"> <%= message %></span>
+                <%}%>
+                <h1>Επικοινωνίστε μαζί μας!</h1>
+                <p class="hint-text">Η ανατροφοδότιση είναι πολύ σημαντική, έτσι ώστε κάθε πελάτης να είναι
+                    ευχαριστημένος με τις υπηρεσίες μας!</p>
+                    <% if(!locals.user){ %>
+                <form action="/client-support" method="POST">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="inputFirstName">Όνομα</label>
+                                <input type="text" class="form-control" id="inputFirstName" name="FirstName"
+                                    value="<%= typeof FirstName != 'undefined' ? FirstName : '' %>" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="inputLastName">Επώνυμο</label>
+                                <input type="text" class="form-control" id="inputLastName" name="LastName"
+                                    value="<%= typeof LastName != 'undefined' ? LastName : '' %>" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Διεύθυνση Email</label>
+                        <input type="email" class="form-control" id="inputEmail" name="email"
+                            value="<%= typeof email != 'undefined' ? email : '' %>" required>
+                    </div>
+                    <div class=" form-group">
+                        <label for="inputMessage">Μήνυμα</label>
+                        <textarea class="form-control" id="inputMessage" name="message" rows="5"
+                            value="<%= typeof message != 'undefined' ? message : '' %>" required></textarea>
+                    </div>
+                    <input type="submit" class="btn btn-primary mt-3" value="Υποβολη">
+                </form>
+                <% } %>
+                <% if(locals.user){ %>
+                <form action="/user/<%- user.id %>/client-support" method="POST">
+
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="inputFirstName">Όνομα</label>
+                                <input type="text" class="form-control" id="inputFirstName" name="FirstName"
+                                    value="<%= typeof FirstName != 'undefined' ? FirstName : '' %>" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="inputLastName">Επώνυμο</label>
+                                <input type="text" class="form-control" id="inputLastName" name="LastName"
+                                    value="<%= typeof LastName != 'undefined' ? LastName : '' %>" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Διεύθυνση Email</label>
+                        <input type="email" class="form-control" id="inputEmail" name="email" value="<%- user.email %>"
+                            required>
+                    </div>
+                    <div class=" form-group">
+                        <label for="inputMessage">Μήνυμα</label>
+                        <textarea class="form-control" id="inputMessage" name="message" rows="5"
+                            value="<%= typeof message != 'undefined' ? message : '' %>" required></textarea>
+                    </div>
+                    <input type="submit" class="btn btn-primary mt-3" value="Υποβολη">
+                </form>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include ('./partials/footer.ejs') %>
+<%- include ('./partials/rest-body.ejs') %>

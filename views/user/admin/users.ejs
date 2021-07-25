@@ -1,0 +1,62 @@
+<%- include ('../../../views/partials/head.ejs') %>
+<%- include ('./partials/navbar.ejs') %>
+
+<div class="container-fluid mt-2 me-4 mb-5">
+
+    <!-- Card -->
+    <div class="row">
+        <% allUsers.forEach(function(o) { %>
+
+        <div class="col-xl-3 col-sm-6 col-6 my-2">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="media d-flex">
+                            <div class="align-self-center">
+                                <i class="icon-speech warning font-large-2 float-left"></i>
+                            </div>
+                            <div class="media-body text-right">
+                                <div class="row">
+                                    <%if(o.isAdmin){%>
+                                    <div class="container col-10">
+                                        <h3><%= o.username %></h3>
+                                        <span><%= o.name %></span>
+                                    </div>
+
+                                    <div class="container col-2">
+                                        <i class="fas fa-user-shield"></i>
+                                    </div>
+                                    <%}%>
+                                    <%if(!o.isAdmin){%>
+
+                                    <h3><%= o.username %></h3>
+                                    <span><%= o.name %></span>
+
+                                    <%}%>
+                            </div>
+                            <div class="row">
+                                <p>entered: <%= o.Date.toISOString().split('T')[0] %></p>
+
+                                </div>
+                                <!-- <a href="/admin/editUser/<%- user.id %>/<%- o.id %>" type="btn"
+                                    class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Edit
+                                </a> -->
+                                <a href="/admin/delete/users/<%- user.id %>/<%- o.id %>" type="btn"
+                                    class="btn btn-danger"><i class="fas fa-trash"></i> Delete
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <%});%>
+    </div>
+    <!-- Card -->
+
+</div>
+<%- include ('./partials/footer.ejs') %>
+<%- include ('../../../views/partials/rest-body.ejs') %>

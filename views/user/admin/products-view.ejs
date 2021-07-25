@@ -1,0 +1,33 @@
+<%- include ('../../../views/partials/head.ejs') %>
+<%- include ('./partials/navbar.ejs') %>
+<%
+var lookup = {};
+var items = products;
+var result = [];
+
+for (var item, i = 0; item = items[i++];) {
+  var name = item.category;
+
+  if (!(name in lookup)) {
+    lookup[name] = 1;
+    result.push(name);
+  }
+}
+%>
+<div class="container-fluid mt-2 me-4 mb-5">
+
+    <!-- Card -->
+
+    <% result.forEach(function(o) { %>
+
+    <a class="nav-link active" href="/admin/<%-user._id%>/<%- o %>/showproducts">
+        <%= o %>
+    </a>
+
+    <%});%>
+
+    <!-- Card -->
+
+</div>
+<%- include ('./partials/footer.ejs') %>
+<%- include ('../../../views/partials/rest-body.ejs') %>

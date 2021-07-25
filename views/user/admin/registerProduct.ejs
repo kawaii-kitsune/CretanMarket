@@ -1,0 +1,86 @@
+<%- include ('../../../views/partials/head.ejs') %>
+<%- include ('./partials/navbar.ejs') %>
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <h2>Καταχωρηση Προιόντος</h2>
+        <hr>
+    </div>
+</div>
+
+<div class="container my-4 mb-4">
+    <div class="row justify-content-center">
+        <div class="col-xl-5 col-md-8 mb-5">
+            <form class="bg-white rounded shadow-5-strong p-2" action="/admin/<%- user.id %>/registerprod"
+                method="POST">
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                    <input type="text" id="title" name="title" class="form-control"
+                        value="<%= typeof title != 'undefined' ? title : '' %>" />
+                    <label class="form-label" for="form1Example1">Όνομα Προιόντος</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="text" id="brand" name="brand" class="form-control"
+                        value="<%= typeof brand != 'undefined' ? brand : '' %>" />
+                    <label class="form-label" for="form1Example1">Μάρκα</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="text" id="description" name="description" class="form-control"
+                        value="<%= typeof description != 'undefined' ? description : '' %>" />
+                    <label class="form-label" for="form1Example1">Περιγραφή</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="number" step="0.01" id="price" class="form-control" name="price"
+                        value="<%= typeof price != 'undefined' ? price : '' %>" />
+                    <label class="form-label" for="form1Example1">Τιμή</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="number" id="stock" class="form-control" name="stock"
+                        value="<%= typeof stock != 'undefined' ? stock : '' %>" />
+                    <label class="form-label" for="form1Example1">Απόθεμα</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="text" id="category" class="form-control" name="category"
+                        value="<%= typeof category != 'undefined' ? category : '' %>" />
+                    <label class="form-label" for="form1Example1">Κατηγορία</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="date" id="date" class="form-control" name="date"
+                        value="<%= typeof date != 'undefined' ? date : '' %>" />
+
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="text" id="image" class="form-control" name="image"
+                        value="<%= typeof image != 'undefined' ? image : '' %>" />
+                    <label class="form-label" for="form1Example1">Εικόνα</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="text" id="suggestions" class="form-control" name="suggestions"
+                        value="<%= typeof suggestions != 'undefined' ? suggestions : '' %>" />
+                    <label class="form-label" for="form1Example1">Προτάσεις</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="text" id="allegations" class="form-control" name="allegations"
+                        value="<%= typeof allegations != 'undefined' ? allegations : '' %>" />
+                    <label class="form-label" for="form1Example1">Συστάσεις</label>
+                </div>
+                <!-- 2 column grid layout for inline styling -->
+                <div class="row mb-4">
+                    <div class="col d-flex justify-content-center">
+                        <!-- Checkbox -->
+                        <div class="form-outline mb-4">
+                            <input type="number" id="sale" class="form-control" name="sale"
+                                value="<%= typeof sale != 'undefined' ? sale : '' %>" />
+                            <label class="form-label" for="form1Example1">Εκπτωση</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block">Καταχωρηση</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ('./partials/footer.ejs') %>
+<%- include ('../../../views/partials/rest-body.ejs') %>

@@ -3,7 +3,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="#"><i class="fas fa-home"></i></a>
+                    <a href="/"><i class="fas fa-home"></i></a>
                 </li>
             </ol>
         </nav>
@@ -41,7 +41,6 @@
                                 <div class="carousel-caption d-none d-md-block bg-primary rounded-pill"
                                     id="carousel-sale">
                                     <h5 class="text-light">Εως και<b class="text-danger"> 11.000</b> Προϊόντα</h5>
-                                    <button type="button" class="btn btn-danger btn-rounded">Eshop</button>
                                 </div>
                             </div>
                         </div>
@@ -53,8 +52,14 @@
                                 <div class="carousel-caption d-none d-md-block bg-primary rounded-pill"
                                     id="carousel-sale">
                                     <h5 class="text-light">Φρέσκα Προϊόντα</h5>
-                                    <a href="/fruits"><button type="button"
+                                    <%if(!locals.user){%>
+                                    <a href="/Οπωροπωλείο/1/5"><button type="button"
                                             class="btn btn-danger btn-rounded">Επισκευθείτε</button></a>
+                                    <%}%>
+                                        <%if(locals.user){%>
+                                    <a href="/user/Οπωροπωλείο/1/5"><button type="button"
+                                            class="btn btn-danger btn-rounded">Επισκευθείτε</button></a>
+                                    <%}%>
 
                                 </div>
                             </div>
@@ -68,8 +73,14 @@
                                     id="carousel-sale">
                                     <h5 class="text-light">Μεγάλες Προσφορές εως και<b class="text-danger"> 50%</b>
                                     </h5>
-                                    <a href="/sales"><button type="button"
-                                            class="btn btn-danger btn-rounded">Sales</button></a>
+                                    <%if(!locals.user){%>
+                                    <a href="/sales/1/5"><button type="button"
+                                            class="btn btn-danger btn-rounded">Επισκευθείτε</button></a>
+                                    <%}%>
+                                            <%if(locals.user){%>
+                                    <a href="/user/sales/1/5"><button type="button"
+                                            class="btn btn-danger btn-rounded">Επισκευθείτε</button></a>
+                                    <%}%>
                                 </div>
                             </div>
                         </div>
@@ -96,113 +107,142 @@
                     <h2 class="text-dark">Προσφορές από το <b>Cretan Market</b></h2>
                     <hr>
                     <div class="row d-flex justify-content-center text-center">
-                        <div class="card text-dark col-3 mx-2">
-                            <img src=" <%- products[0].image %>" class="card-img" alt="..." />
-                            <div class="card-img-overlay m-2">
-                                <h5 class="card-title"><%- products[0].title %></h5>
-                                <ul class="list-group  list-group-flush">
-                                    <li class="list-group-item bg-transparent">
-                                        <span class="badge bg-danger"><%- products[0].price %> <i
-                                                class="fas fa-euro-sign"></i></span>
-                                    </li>
-                                </ul>
-                                <p class="card-text"><span class="badge bg-warning text-dark"> εως 12/05</span></p>
-                                <a href="/<%- products[0].id %>" class="btn btn-primary"> <i
-                                        class="fas fa-shopping-cart"></i> Μετάβαση</a>
+                        <% if(locals.user){ %>
+                                    <div class="card text-dark col-3 mx-2">
+                                        <img src="<%- products[0].image %>" class="card-img" alt="..." />
+                                        <div class="card-img-overlay m-2">
+                                            <h5 class="card-title"><%- products[0].title %></h5>
+                                            <ul class="list-group  list-group-flush">
+                                                <li class="list-group-item bg-transparent">
+                                                    <span class="badge bg-danger"><%- products[0].price %> <i
+                                                            class="fas fa-euro-sign"></i></span>
+                                                </li>
+                                            </ul>
+                                            <p class="card-text"><span class="badge bg-warning text-dark"> εως
+                                                    12/05</span></p>
+                                            <a href="/user/<%- products[0].category %>/<%- products[0].id %>"
+                                                class="btn btn-primary"> <i class="fas fa-shopping-cart"></i>
+                                                Μετάβαση</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="card text-dark col-3 mx-2">
+                                        <img src=" <%- products[1].image %>" class="card-img" alt="..." />
+                                        <div class="card-img-overlay m-2">
+                                            <h5 class="card-title"><%- products[1].title %></h5>
+                                            <ul class="list-group  list-group-flush">
+
+                                                <li class="list-group-item bg-transparent"><span
+                                                        class="badge bg-danger"><%- products[1].price %> <i
+                                                            class="fas fa-euro-sign"></i></span>
+                                                </li>
+                                            </ul>
+                                            <p class="card-text"><span class="badge bg-warning text-dark"> εως
+                                                    12/05</span></p>
+                                            <a href="/user/<%- products[1].category %>/<%- products[1].id %>"
+                                                class="btn btn-primary"> <i class="fas fa-shopping-cart"></i>
+                                                Μετάβαση</a>
+                                        </div>
+                                    </div>
+                                    <div class="card  text-dark col-3 mx-2">
+                                        <img src="<%- products[2].image %>" class="card-img" alt="..." />
+                                        <div class="card-img-overlay m-2">
+                                            <h5 class="card-title"><%- products[2].title %></h5>
+                                            <ul class="list-group  list-group-flush">
+
+                                                <li class="list-group-item bg-transparent"><span
+                                                        class="badge bg-danger"><%- products[2].price %> <i
+                                                            class="fas fa-euro-sign"></i></span>
+                                                </li>
+                                            </ul>
+                                            <p class="card-text"><span class="badge bg-warning text-dark"> εως
+                                                    12/05</span></p>
+                                            <a href="/user/<%- products[2].category %>/<%- products[2].id %>"
+                                                class="btn btn-primary"> <i class="fas fa-shopping-cart"></i>
+                                                Μετάβαση</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
-                        </div>
-                        <div class="card text-dark col-3 mx-2">
-                            <img src=" <%- products[1].image %>" class="card-img" alt="..." />
-                            <div class="card-img-overlay m-2">
-                                <h5 class="card-title"><%- products[1].title %></h5>
-                                <ul class="list-group  list-group-flush">
-
-                                    <li class="list-group-item bg-transparent"><span
-                                            class="badge bg-danger"><%- products[1].price %> <i
-                                                class="fas fa-euro-sign"></i></span>
-                                    </li>
-                                </ul>
-                                <p class="card-text"><span class="badge bg-warning text-dark"> εως 12/05</span></p>
-                                <a href="/<%- products[1].id %>" class="btn btn-primary"> <i
-                                        class="fas fa-shopping-cart"></i>
-                                    Μετάβαση</a>
+                            <% } %>
+                            <% if(!locals.user){ %>
+                            <div class="card text-dark col-3 mx-2">
+                                <img src="<%- products[0].image %>" class="card-img" alt="..." />
+                                <div class="card-img-overlay m-2">
+                                    <h5 class="card-title"><%- products[0].title %></h5>
+                                    <ul class="list-group  list-group-flush">
+                                        <li class="list-group-item bg-transparent">
+                                            <span class="badge bg-danger"><%- products[0].price %> <i
+                                                    class="fas fa-euro-sign"></i></span>
+                                        </li>
+                                    </ul>
+                                    <p class="card-text"><span class="badge bg-warning text-dark"> εως 12/05</span></p>
+                                    <a href="/<%- products[0].category %>/<%- products[0].id %>"
+                                        class="btn btn-primary"> <i class="fas fa-shopping-cart"></i>
+                                        Μετάβαση</a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card  text-dark col-3 mx-2">
-                            <img src=" <%- products[2].image %>" class="card-img" alt="..." />
-                            <div class="card-img-overlay m-2">
-                                <h5 class="card-title"><%- products[2].title %></h5>
-                                <ul class="list-group  list-group-flush">
+                            <div class="card text-dark col-3 mx-2">
+                                <img src="<%- products[1].image %>" class="card-img" alt="..." />
+                                <div class="card-img-overlay m-2">
+                                    <h5 class="card-title"><%- products[1].title %></h5>
+                                    <ul class="list-group  list-group-flush">
 
-                                    <li class="list-group-item bg-transparent"><span
-                                            class="badge bg-danger"><%- products[2].price %> <i
-                                                class="fas fa-euro-sign"></i></span>
-                                    </li>
-                                </ul>
-                                <p class="card-text"><span class="badge bg-warning text-dark"> εως 12/05</span></p>
-                                <a href="/<%- products[2].id %>" class="btn btn-primary"> <i
-                                        class="fas fa-shopping-cart"></i>
-                                    Μετάβαση</a>
+                                        <li class="list-group-item bg-transparent"><span
+                                                class="badge bg-danger"><%- products[1].price %> <i
+                                                    class="fas fa-euro-sign"></i></span>
+                                        </li>
+                                    </ul>
+                                    <p class="card-text"><span class="badge bg-warning text-dark"> εως 12/05</span></p>
+                                    <a href="/<%- products[1].category %>/<%- products[1].id %>"
+                                        class="btn btn-primary"> <i class="fas fa-shopping-cart"></i>
+                                        Μετάβαση</a>
+                                </div>
                             </div>
+                            <div class="card  text-dark col-3 mx-2">
+                                <img src="<%- products[2].image %>" class="card-img" alt="..." />
+                                <div class="card-img-overlay m-2">
+                                    <h5 class="card-title"><%- products[2].title %></h5>
+                                    <ul class="list-group  list-group-flush">
+
+                                        <li class="list-group-item bg-transparent"><span
+                                                class="badge bg-danger"><%- products[2].price %> <i
+                                                    class="fas fa-euro-sign"></i></span>
+                                        </li>
+                                    </ul>
+                                    <p class="card-text"><span class="badge bg-warning text-dark"> εως 12/05</span></p>
+                                    <a href="/<%- products[2].category %>/<%- products[2].id %>"
+                                        class="btn btn-primary"> <i class="fas fa-shopping-cart"></i>
+                                        Μετάβαση</a>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
-
-                </div>
-
-
-                <!-- Jumbotron -->
+                    <% } %>
 
 
-                <div class="row mt-4 ">
-                    <img src="/img/Coupons/coupon 1.png" alt="" class="col-6 rounded rounded-3">
-                    <img src="/img/Coupons/coupon 2.png" alt="" class="col-6 rounded rounded-3">
-                </div>
-                <div class="row d-flex justify-content-center mt-3">
-                    <h2 class="text-dark">Βρες όλα όσα χρειάζεσαι</h2>
-                </div>
-                <% if(locals.user){ %>
 
-                <div class="row mt-4 ">
-                    <div class="row mt-1 ">
-                        <a href="/user/galaktokomika" class="col-3"><img src="/img/dashboard/1.png" alt=""
-                                class="col-12"></a>
-                        <a href="/user/meatandfish" class="col-3"><img src="/img/dashboard/2.png" alt=""
-                                class="col-12"></a>
-                        <a href="/user/fruits" class="col-3"><img src="/img/dashboard/3.png" alt="" class="col-12"></a>
-                        <a href="/user/olagiatospiti" class="col-3"><img src="/img/dashboard/4.png" alt=""
-                                class="col-12"></a>
+                    <!-- Jumbotron -->
+
+
+                    <div class="row mt-4 ">
+                        <img src="/img/Coupons/coupon 1.png" alt="" class="col-6 rounded rounded-3">
+                        <img src="/img/Coupons/coupon 2.png" alt="" class="col-6 rounded rounded-3">
                     </div>
-                    <div class="row mt-1 mb-3">
-                        <a href="/user/sanitize" class="col-3"><img src="/img/dashboard/5.png" alt=""
-                                class="col-12"></a>
-                        <a href="/user/personalHygiene" class="col-3"><img src="/img/dashboard/6.png" alt=""
-                                class="col-12"></a>
-                        <a href="/user/cleaning" class="col-3"><img src="/img/dashboard/7.png" alt=""
-                                class="col-12"></a>
-                        <a href="/user/pets" class="col-3"><img src="/img/dashboard/8.png" alt="" class="col-12"></a>
+                    <div class="row d-flex justify-content-center mt-3">
+                        <h2 class="text-dark">Βρες όλα όσα χρειάζεσαι</h2>
                     </div>
-                </div>
-                <% } if(!locals.user){ %>
-                <div class="row mt-4 ">
-                    <div class="row mt-1 ">
-                        <a href="/galaktokomika" class="col-3"><img src="/img/dashboard/1.png" alt=""
-                                class="col-12"></a>
-                        <a href="/meatandfish" class="col-3"><img src="/img/dashboard/2.png" alt="" class="col-12"></a>
-                        <a href="/fruits" class="col-3"><img src="/img/dashboard/3.png" alt="" class="col-12"></a>
-                        <a href="/olagiatospiti" class="col-3"><img src="/img/dashboard/4.png" alt=""
-                                class="col-12"></a>
-                    </div>
-                    <div class="row mt-1 mb-3">
-                        <a href="/sanitize" class="col-3"><img src="/img/dashboard/5.png" alt="" class="col-12"></a>
-                        <a href="/personalHygiene" class="col-3"><img src="/img/dashboard/6.png" alt=""
-                                class="col-12"></a>
-                        <a href="/cleaning" class="col-3"><img src="/img/dashboard/7.png" alt="" class="col-12"></a>
-                        <a href="/pets" class="col-3"><img src="/img/dashboard/8.png" alt="" class="col-12"></a>
-                    </div>
-                </div>
-                <% } %>
+                    <% if(locals.user){ %>
+                    <%- include ('links-user.ejs'); %>
+
+                    <% } if(!locals.user){ %>
+                    <%- include ('links.ejs'); %>
+                    <% } %>
 
 
-            </div>
+                </div>
 </main>

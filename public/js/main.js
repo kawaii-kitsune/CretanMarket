@@ -30,12 +30,3 @@ window.addEventListener('keyup', (e) => {
     }
   });
 });
-
-document.getElementById("reg").onclick = function () {
-  document.getElementById("pills-register").classList.add("show");
-  document.getElementById("pills-register").classList.add("active");
-  document.getElementById("pills-login").classList.remove("show");
-  document.getElementById("pills-login").classList.remove("active");
-  document.getElementById("tab-login").classList.remove("active");
-  document.getElementById("tab-register").classList.add("active");
-}

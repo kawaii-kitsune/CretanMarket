@@ -1,0 +1,27 @@
+<%- include ('../../../views/partials/head.ejs') %>
+<%- include ('./partials/navbar.ejs') %>
+
+
+<div class="container d-flex justify-content-center mt-3">
+    <div class="row ">
+        <h2>Orders</h2>
+        <hr>
+    </div>
+    <% orders.forEach(function(o){%>
+    <div class="card col-3 me-2 mb-2 shadow">
+        <div class="card-body m-2">
+            <p><%- o.name %> <%- o.surname %></p>
+            <p><%- o.address %></p>
+            <p><%- o.email %></p>
+            <p><strong><%- o.country %>, <%- o.address %>, <%- o.citystate %>, <%- o.zip %></strong></p>
+        </div>
+        <div class="card-footer">
+            <a href="/admin/order/delete/<%- locals.user.id %>/<%- o.id %>" type="btn" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+    <%});%>
+
+</div>
+
+<%- include ('./partials/footer.ejs') %>
+<%- include ('../../../views/partials/rest-body.ejs') %>
