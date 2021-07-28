@@ -257,6 +257,32 @@ router.get('/:id/checkout', ensureAuthenticated, async (req, res, next) => {
     res.render('error');
   }
 });
+router.get('/sales/:page/:limit', async (req, res, next) => {
+  try {
+    var sorting = 0;
+    var page = req.params.page;
+    var category = 'sales';
+    var limit = req.params.limit;
+    const products = await Products.find({
+      sale: {
+        $gte: 1
+      }
+    });
+    res.render('shop/products', {
+      sorting,
+      limit,
+      category,
+      page,
+      cart: new Cart(req.session.cart ? req.session.cart : {}),
+      products,
+      user:req.user
+    })
+  } catch (err) {
+    res.send({
+      message: err
+    });
+  }
+});
 router.get('/:category/:page/:limit', ensureAuthenticated, async (req, res, next) => {
   try {
     var page = req.params.page;
@@ -373,24 +399,7 @@ router.get('/:category/:page/:limit/:sorting', ensureAuthenticated, async (req, 
     });
   }
 });
-router.get('/sales', ensureAuthenticated, async (req, res, next) => {
-  try {
-    const products = await Products.find({
-      sale: {
-        $gte: 1
-      }
-    });
-    res.render('shop/products', {
-      cart: new Cart(req.session.cart ? req.session.cart : {}),
-      products,
-      user: req.user
-    })
-  } catch (err) {
-    res.send({
-      message: err
-    });
-  }
-});
+
 router.get('/:category/:productId', ensureAuthenticated, async (req, res, next) => {
 
   try {
