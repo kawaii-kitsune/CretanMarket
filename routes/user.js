@@ -188,7 +188,7 @@ router.post('/register', (req, res, next) => {
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/user/profile',
-    failureRedirect: '/user/register',
+    failureRedirect: '/',
     failureFlash: true
   })(req, res, next);
 });
@@ -212,6 +212,67 @@ router.get('/profile', ensureAuthenticated, async (req, res, next) => {
     user: req.user
   })
 });
+
+//footer redirects
+
+router.get('/delivery', ensureAuthenticated, (req, res) => {
+
+  res.render('footerRed/delivery', {
+    cart: new Cart(req.session.cart ? req.session.cart : {}),
+    user:req.user
+  });
+
+});
+router.get('/termsAndConds', ensureAuthenticated, (req, res) => {
+
+  res.render('footerRed/tmc', {
+    cart: new Cart(req.session.cart ? req.session.cart : {}),
+    user:req.user
+  });
+
+});
+router.get('/policy', ensureAuthenticated, (req, res) => {
+
+  res.render('footerRed/policy', {
+    cart: new Cart(req.session.cart ? req.session.cart : {}),
+    user:req.user
+  });
+
+});
+router.get('/security', ensureAuthenticated, (req, res) => {
+
+  res.render('footerRed/security', {
+    cart: new Cart(req.session.cart ? req.session.cart : {}),
+    user:req.user
+  });
+
+});
+router.get('/franchise', ensureAuthenticated, (req, res) => {
+
+  res.render('footerRed/franchise', {
+    cart: new Cart(req.session.cart ? req.session.cart : {}),
+    user:req.user
+  });
+
+});
+router.get('/respo', ensureAuthenticated, (req, res) => {
+
+  res.render('footerRed/respo', {
+    cart: new Cart(req.session.cart ? req.session.cart : {}),
+    user:req.user
+  });
+
+});
+router.get('/cmarket', ensureAuthenticated, (req, res) => {
+
+  res.render('footerRed/cmarket', {
+    cart: new Cart(req.session.cart ? req.session.cart : {}),
+    user:req.user
+
+  });
+
+});
+//
 router.get('/reduce/:uid/:id', ensureAuthenticated, function (req, res, next) {
   var userid = req.params.uid
   var productId = req.params.id;
@@ -343,7 +404,8 @@ router.get('/:category/:page/:limit/price/:sorting', ensureAuthenticated, async 
         category,
         page,
         cart: new Cart(req.session.cart ? req.session.cart : {}),
-        products
+        products,
+        user: req.user
       });
     }
 
@@ -389,7 +451,8 @@ router.get('/:category/:page/:limit/:sorting', ensureAuthenticated, async (req, 
         category,
         page,
         cart: new Cart(req.session.cart ? req.session.cart : {}),
-        products
+        products,
+        user: req.user
       });
     }
 
