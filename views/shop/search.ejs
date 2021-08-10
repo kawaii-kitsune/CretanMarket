@@ -1,0 +1,203 @@
+<%- include ('../partials/head.ejs') %>
+<% if(!locals.user){ %>
+<%- include ('../partials/navbar.ejs') %>
+<% } %>
+<% if(locals.user){ %>
+<%- include ('../partials/usernav.ejs') %>
+<% } %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="/"><i class="fas fa-home"></i></a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#"><%- category %></a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+</nav>
+<main class="container w-100 mb-5 mt-2">
+    <!-- Product Style -->
+    <section class="product-area shop-sidebar shop section">
+        <div class="container">
+            <h2>Αποτελέσματα Αναζήτησης</h2>
+            <hr>
+                <div class="col-lg-9 col-md-8 col-12">
+                    <div class="row">
+                        <div class="col-12">
+                            
+                            <!--/ End Shop Top -->
+                        </div>
+                    </div>
+                    <div class="container w-100" id="list-products" style="display:none">
+
+                        <div class="d-flex justify-content-center row w-100">
+                            <div class="col-md-12">
+                                <% if(products){ %>
+                                <% products.forEach(function(o) { %>
+                                <div class="row p-2 bg-white border-transparent rounded m-2">
+                                    <div class="col-md-3 mt-1"><img
+                                            class="img-fluid img-responsive rounded product-image" src="<%- o.image %>">
+                                    </div>
+                                    <div class="col-md-6 mt-1">
+                                        <h5><%-o.title  %></h5>
+                                        <div class="d-flex flex-row">
+
+                                        </div>
+                                        <div class="mt-1 mb-1 spec-1"><span><%- o.allegations %></span>
+                                            <div class="mt-1 mb-1 spec-1"><span><%- o.suggestions %></span>
+
+                                            </div>
+                                            <div
+                                                class="align-items-center align-content-center col-md-3 border-left mt-1">
+                                                <div class="d-flex flex-row align-items-center">
+                                                    <h4 class="mr-1"><%- o.price %></h4>
+                                                    <%if(o.sales != 0.0){%>
+                                                    <span class="strike-text badge-danger"><%- o.sale %> %</span><%}%>
+                                        </div>
+                                        
+                                        <div class="d-flex flex-column mt-4">
+                                            <% if(!locals.user){ %>
+                                                    <a href="/<%- category %>/<%- o.id %>"><button
+                                                            class="btn btn-primary btn-sm"
+                                                            type="button">Λεπτομέριες</button></a>
+                                                    <% } %>
+                                                    <% if(locals.user){ %>
+                                                    <a href="/user/<%- category %>/<%- o.id %>"><button
+                                                            class="btn btn-primary btn-sm"
+                                                            type="button">Λεπτομέριες</button></a>
+                                                    <% } %>
+
+                                                    <a href="/add-to-cart/<%- o._id %>"><button
+                                                            class="btn btn-outline-primary btn-sm mt-2" type="button"><i
+                                                                class="fas fa-shopping-cart m-2"></i>Προσθηκη</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%});} %>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container mt-5 mb-5" id="tiled-products">
+                        <div class="row w-100">
+
+                            <% products.forEach(function(o) { %>
+                            <div class="col-lg-4 col-md-6 col-12">
+                                <div class="single-product">
+                                    <div class="product-img">
+                                        <% if(!locals.user){ %>
+                                        <a href="/<%- category %>/<%- o.id %>">
+                                            <% } %>
+                                            <% if(locals.user){ %>
+                                            <a href="/user/<%- category %>/<%- o.id %>">
+                                                <% } %>
+
+                                                <img class="default-img" src="<%- o.image %>" alt="#">
+                                                <img class="hover-img" src="<%- o.image %>" alt="#">
+                                                <% if(o.sale!=0){ %>
+                                                <span class="price-dec"><%- o.sale %>% Off</span>
+                                                <% } %>
+
+                                            </a>
+                                            <div class="button-head">
+                                                
+                                                    <% if(!locals.user){ %>
+                                                        <div class="product-action">
+                                                            <a data-toggle="modal" data-target="#exampleModal"
+                                                                title="Quick View" href="/add-to-cart/<%- o._id %>"><i
+                                                                    class="fas fa-eye"></i><span>Quick
+                                                                    Shop</span></a>
+                                                        </div>
+                                                        <div class="product-action-2">
+                                                    <a title="Add to cart" href="/<%- category %>/<%- o._id %>"><i
+                                                            class="fas fa-shopping-cart"></i>
+                                                        Προσθηκη</a>
+                                                    <% } %>
+                                                    <% if(locals.user){ %>
+                                                        <div class="product-action">
+                                                            <a data-toggle="modal" data-target="#exampleModal"
+                                                                title="Quick View" href="/user/add-to-cart/<%- o._id %>"><i
+                                                                    class="fas fa-eye"></i><span>Quick
+                                                                    Shop</span></a>
+                                                        </div>
+                                                        <div class="product-action-2">
+                                                    <a title="Add to cart" href="/user/<%- category %>/<%- o._id %>"><i
+                                                            class="fas fa-shopping-cart"></i>
+                                                        Προσθηκη</a>
+                                                    <% } %>
+
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <h3><a href="/<%- category %>/<%- o._id %>"><%- o.title %></a></h3>
+                                        <div class="product-price">
+                                            <span><i class="fas fa-euro-sign"></i> <%- o.price %></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <%}); %>
+                        </div>
+                    </div>
+                    <nav aria-label="...">
+                        <ul class="pagination">
+
+                            <% if(locals.sorting){%>
+                            <li class="page-item">
+                                <a class="page-link" href="/<%- category %>/<%= page-1 %>/<%- limit %>/<%- sorting %>"
+                                    tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link active"
+                                    href="/<%- category %>/<%- page %>/<%- limit %>/<%- sorting %>"><%= page %></a></li>
+                            <li class="page-item">
+                                <a class="page-link"
+                                    href="/<%- category %>/<%= page + 1 %>/<%- limit %>/<%- sorting %>">Next</a>
+                            </li>
+                            <%}%>
+                            <% if(!locals.sorting){ var k=1;%>
+                            <li class="page-item">
+                                <a class="page-link" href="/<%- category %>/<%- page-k %>/<%- limit %>"
+                                    tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link active"
+                                    href="/<%- category %>/<%- page %>/<%- limit %>"><%= page %></a></li>
+                            <li class="page-item">
+                                <a class="page-link"
+                                    href="/<%- category %>/<%- page.valueOf()+k.valueOf() %>/<%- limit %>">Next</a>
+                            </li>
+                            <%}%>
+                            
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        
+
+    </section>
+    <!--/ End Product Style 1  -->
+</main>
+<script>
+    document.getElementById("shop-grid").onclick = function () {
+        document.getElementById("shop-list").classList.remove("active");
+        document.getElementById("shop-grid").classList.add("active");
+        document.getElementById("tiled-products").style.display = "block";
+        document.getElementById("list-products").style.display = "none";
+    }
+    document.getElementById("shop-list").onclick = function () {
+        document.getElementById("shop-list").classList.add("active");
+        document.getElementById("shop-grid").classList.remove("active");
+        document.getElementById("tiled-products").style.display = "none";
+        document.getElementById("list-products").style.display = "block";
+    }
+</script>
+<%- include ('../partials/footer.ejs') %>
+                            <%- include ('../partials/rest-body.ejs') %>

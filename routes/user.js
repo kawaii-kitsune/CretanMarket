@@ -273,6 +273,38 @@ router.get('/cmarket', ensureAuthenticated, (req, res) => {
 
 });
 //
+router.post('/search', async(req,res,next)=>{
+  // Products.createIndex( { name: "text", description: "text" } );
+  const{search}=req.body;
+  console.log(req.body)
+  // find documents based on our query and projection
+  const products = await Products.find({ title: { $regex: req.body.search.toString(), $options: "i" } }, function(err, docs) {
+    console.log("Partial Search Begins");
+    console.log(docs);
+    });
+    res.render('shop/search', {
+      limit:5,
+      sorting:0,
+      category:'search',
+      page:1,
+      cart: new Cart(req.session.cart ? req.session.cart : {}),
+      products,
+      user:req.user
+    });   
+});
+router.get('/add-to-cart/:id', function (req, res, next) {
+  var productId = req.params.id;
+  var cart = new Cart(req.session.cart ? req.session.cart : {});
+  Products.findById(productId, function (err, product) {
+    if (err) {
+      return res.redirect(req.get('referer'));
+    }
+
+    req.session.cart = cart.add(product, product.id);
+    console.log(req.session.cart)
+    res.redirect(req.get('shop/cart'));
+  });
+});
 router.get('/reduce/:uid/:id', ensureAuthenticated, function (req, res, next) {
   var userid = req.params.uid
   var productId = req.params.id;
@@ -483,6 +515,9 @@ router.get('/:category/:productId', ensureAuthenticated, async (req, res, next) 
     });
   }
 });
+
+
+//
 router.get('/client-support', ensureAuthenticated, function (req, res, next) {
 
   res.render('contactUs', {

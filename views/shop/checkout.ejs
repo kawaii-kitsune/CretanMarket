@@ -353,7 +353,7 @@
                                 <small class="text-muted"><%- o.brand %></small>
                             </div>
                             <h7 class="text-muted"><i class="fas fa-times"></i> <%= locals.cart.items[o._id].qty %></h7>
-                            <span class="text-muted"><%= locals.cart.totalPrice.toFixed(2) %> <i class="fas fa-euro-sign"></i></span>
+                            <span class="text-muted"><%= locals.cart.items[o._id].price.toFixed(2) %> <i class="fas fa-euro-sign"></i></span>
                         </li>
                         <%}%>
                 <%});%>
@@ -368,7 +368,7 @@
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Συνολο (EUR)</span>
-                            <strong><%= (locals.cart.totalPrice+4).toFixed(2) %> <i class="fas fa-euro-sign"></i></strong>
+                            <strong><%= (locals.cart.totalPrice + 4 ).toFixed(2)%> <i class="fas fa-euro-sign"></i></strong>
                         </li>
                         </ul>
                         <!-- Cart -->
