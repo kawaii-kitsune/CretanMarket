@@ -309,6 +309,24 @@ router.get('/:category/:productId', async (req, res) => {
     res.render('error');
   }
 });
+router.post('/search', async(req,res,next)=>{
+  // Products.createIndex( { name: "text", description: "text" } );
+  const{search}=req.body;
+  console.log(req.body)
+  // find documents based on our query and projection
+  const products = await Products.find({ title: { $regex: req.body.search.toString(), $options: "i" } }, function(err, docs) {
+    console.log("Partial Search Begins");
+    console.log(docs);
+    });
+    res.render('shop/products', {
+      limit:5,
+      sorting:0,
+      category:'search',
+      page:1,
+      cart: new Cart(req.session.cart ? req.session.cart : {}),
+      products
+    });   
+});
 router.post('/newsletter', (req, res, next) => {
   var errors = []
   const {
