@@ -4,14 +4,14 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 require('dotenv/config');
 const nodemailer = require('nodemailer');
-var transport = nodemailer.createTransport({
-  host: process.env.SMTPHOST,
-  port: 2525,
-  auth: {
-    user: process.env.SMTPUSER,
-    pass: process.env.SMTPPASS
-  }
-});
+// var transport = nodemailer.createTransport({
+//   host: process.env.SMTPHOST,
+//   port: 2525,
+//   auth: {
+//     user: process.env.SMTPUSER,
+//     pass: process.env.SMTPPASS
+//   }
+// });
 // Load User model
 const User = require('../models/User');
 const Products = require('../models/Products');
@@ -311,7 +311,7 @@ router.get('/reduce/:uid/:id', ensureAuthenticated, function (req, res, next) {
   var cart = new Cart(req.session.cart);
 
   req.session.cart = cart.reduceByOne(productId);
-  res.redirect('/user/' + userid + '/cart-view');
+  res.redirect('/user/cart-view/'+ userid );
 });
 router.get('/remove-from-cart/:uid/:id', ensureAuthenticated, function (req, res, next) {
   var userid = req.params.uid
@@ -319,7 +319,7 @@ router.get('/remove-from-cart/:uid/:id', ensureAuthenticated, function (req, res
   var cart = new Cart(req.session.cart);
 
   req.session.cart = cart.deleteFromCart(productId);
-  res.redirect('/user/' + userid + '/cart-view');
+  res.redirect('/user/cart-view/'+ userid );
 });
 router.get('/cart-view/:id', ensureAuthenticated, async (req, res, next) => {
   try {
