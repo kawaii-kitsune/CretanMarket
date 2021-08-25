@@ -22,79 +22,6 @@ const {
   ensureAuthenticated,
   forwardAuthenticated
 } = require('../config/auth');
-
-router.post('/:id/client-support', ensureAuthenticated, (req, res, next) => {
-  const {
-    FirstName,
-    LastName,
-    email,
-    message
-  } = req.body;
-  newemail = new Contactmessage(req.body);
-  newemail.save(function (err, doc) {
-    if (err) return console.error(err);
-    res.render('contactUs', {
-      message: 'Ευχαριστούμε που μοιραστήκατε μαζί μας την γνώμη σας',
-      cart: new Cart(req.session.cart ? req.session.cart : {}),
-      user: req.user
-    });
-  });
-});
-router.post('/:id/checkout', ensureAuthenticated, async (req, res, next) => {
-  var cart = new Cart(req.session.cart);
-  const {
-    username,
-    name,
-    surname,
-    address,
-    address2,
-    email,
-    citystate,
-    zip,
-    country
-  } = req.body;
-
-  const message = {
-    from: 'noreply@cretanmarket.com', // Sender address
-    to: email, // List of recipients
-    subject: 'Η αγορά σας έγινε με επιτυχία', // Subject line
-    text: 'Eυχαριστούμε' + name + '. Η παραγγελία σας για' + address + ',' + citystate + ',' + zip + ',' + country +
-      'καταχωρήθηκε στο σύστημα ' // Plain text body
-  };
-  transport.sendMail(message, function (err, info) {
-    if (err) {
-      console.log(err)
-    } else {
-      newOrder = new Order(req.body);
-      newOrder.save(function (err, doc) {
-        if (err) return console.error(err);
-        req.session.cart = cart.clearCart()
-        res.render('thankyou', {
-          message: 'Η αγορά σας έγινε με επιτυχία!',
-          cart: new Cart(req.session.cart ? req.session.cart : {}),
-          user: req.user
-        });
-      });
-    }
-  });
-});
-router.post('/client-support', ensureAuthenticated, async (req, res, next) => {
-  const {
-    FirstName,
-    LastName,
-    email,
-    message
-  } = req.body;
-  newemail = new Contactmessage(req.body);
-  newemail.save(function (err, doc) {
-    if (err) return console.error(err);
-    res.render('contactUs', {
-      message: 'Ευχαριστούμε που μοιραστήκατε μαζί μας την γνώμη σας',
-      cart: new Cart(req.session.cart ? req.session.cart : {}),
-      user: req.user
-    });
-  });
-});
 // Register
 router.post('/register', (req, res, next) => {
   const {
@@ -192,6 +119,79 @@ router.post('/login', (req, res, next) => {
     failureFlash: true
   })(req, res, next);
 });
+router.post('/:id/client-support', ensureAuthenticated, (req, res, next) => {
+  const {
+    FirstName,
+    LastName,
+    email,
+    message
+  } = req.body;
+  newemail = new Contactmessage(req.body);
+  newemail.save(function (err, doc) {
+    if (err) return console.error(err);
+    res.render('contactUs', {
+      message: 'Ευχαριστούμε που μοιραστήκατε μαζί μας την γνώμη σας',
+      cart: new Cart(req.session.cart ? req.session.cart : {}),
+      user: req.user
+    });
+  });
+});
+router.post('/:id/checkout', ensureAuthenticated, async (req, res, next) => {
+  var cart = new Cart(req.session.cart);
+  const {
+    username,
+    name,
+    surname,
+    address,
+    address2,
+    email,
+    citystate,
+    zip,
+    country
+  } = req.body;
+
+  const message = {
+    from: 'noreply@cretanmarket.com', // Sender address
+    to: email, // List of recipients
+    subject: 'Η αγορά σας έγινε με επιτυχία', // Subject line
+    text: 'Eυχαριστούμε' + name + '. Η παραγγελία σας για' + address + ',' + citystate + ',' + zip + ',' + country +
+      'καταχωρήθηκε στο σύστημα ' // Plain text body
+  };
+  transport.sendMail(message, function (err, info) {
+    if (err) {
+      console.log(err)
+    } else {
+      newOrder = new Order(req.body);
+      newOrder.save(function (err, doc) {
+        if (err) return console.error(err);
+        req.session.cart = cart.clearCart()
+        res.render('thankyou', {
+          message: 'Η αγορά σας έγινε με επιτυχία!',
+          cart: new Cart(req.session.cart ? req.session.cart : {}),
+          user: req.user
+        });
+      });
+    }
+  });
+});
+router.post('/client-support', ensureAuthenticated, async (req, res, next) => {
+  const {
+    FirstName,
+    LastName,
+    email,
+    message
+  } = req.body;
+  newemail = new Contactmessage(req.body);
+  newemail.save(function (err, doc) {
+    if (err) return console.error(err);
+    res.render('contactUs', {
+      message: 'Ευχαριστούμε που μοιραστήκατε μαζί μας την γνώμη σας',
+      cart: new Cart(req.session.cart ? req.session.cart : {}),
+      user: req.user
+    });
+  });
+});
+
 // Register Page
 router.get('/register', forwardAuthenticated, (req, res, next) => res.render('user/connect', {
   errors: [],
